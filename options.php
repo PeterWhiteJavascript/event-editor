@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--Users should be able to set some options here that are saved in a cookie-->
         <?php include 'config.php';?>
-        <title>Greece Lightning Event Editing Tool</title>
+        <title>Set Options</title>
     </head>
     <body>
         <div id="wrapper">
-            <div id="title"><h1>GREECE LIGHTNING EVENT EDITOR</h1></div>
+            <div id="title"><h1>OPTIONS</h1></div>
             <div id="content">
                 <ul class="menu">
                     <li><a href="load.php"><div>LOAD</div></a></li>

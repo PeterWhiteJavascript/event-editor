@@ -2,11 +2,11 @@
 <html>
     <head>
         <?php include 'config.php';?>
-        <title>Greece Lightning Event Editing Tool</title>
+        <title>Load an Event</title>
     </head>
     <body>
         <div id="wrapper">
-            <div id="title"><h1>GREECE LIGHTNING EVENT EDITOR</h1></div>
+            <div id="title"><h1>LOAD</h1></div>
             <div id="content">
                 <ul class="menu">
                     <li><a href="load.php"><div>LOAD</div></a></li>
