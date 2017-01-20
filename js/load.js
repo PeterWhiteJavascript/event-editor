@@ -5,6 +5,12 @@ var scenes = [];
 var selectedScene;
 
 $(function(){
+    //Fill the scenes array
+    var sc = $("#load-scene").children();
+    for(var i=0;i<sc.length;i++){
+        scenes.push({name:$(sc[i]).attr("name"),desc:$(sc[i]).attr("desc")});
+    }
+    
     //START OPTS BUTTONS
     $('#open-scene').click( function(e) {
         console.log(selectedScene)

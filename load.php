@@ -1,7 +1,5 @@
 <?php
 
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,13 +12,15 @@
             <div id="title"><h1>LOAD</h1></div>
             <div id="content">
                 <ul id="load-scene" class="menu left">
+                    <!-- SAMPLE LI -->
+                    <li name="ASJ:DLKASJD" desc="Use php to echo the first desc"><a class="scene-button"><div class="menu-button">ASJ:DLKASJD</div></a></li>
                     <?php
                     //use for loop to show any scenes that have been created
                     ?>
                 </ul>
                 <div id="load-desc" class="menu middle">
                     <!--Show the first description-->
-                    
+                    <div class="desc-text"><?php echo "Use php to echo the first desc"; ?></div>
                 </div>
                 <ul id="load-opts" class="menu right">
                     <li><a id="open-scene"><div class="menu-button">Open Scene</div></a></li>
