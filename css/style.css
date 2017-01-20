@@ -48,6 +48,8 @@ table {
 	border-spacing: 0;
 }
 
+/* Start my style */
+
 a:visited {
     color: black;
 }
@@ -74,7 +76,7 @@ body {
     background-repeat: no-repeat;
 }
 #title {
-    padding: 20px;
+    padding: 2%;
 }
 h1 {
     font-size: 58px;
@@ -86,18 +88,18 @@ h1 {
     border-style: solid;
     border-color: black;
     border-image: initial;
+    border-radius: 5px;
 }
 #content{
-    
+    margin-left:2%;
 }
-.menu {
-    font-size: 40px;
-    display: block;
+
+.menu { 
+    font-size: 34px;
     background-color: red;
     width: 25%;
     height: 50%;
     text-align: center;
-    margin: auto;
     border-width: initial;
     border-style: solid;
     border-color: black;
@@ -106,13 +108,11 @@ h1 {
     padding: 10px;
 }
 .menu li {
-    height: 75%;
-    width: 60%;
     display: block;
     padding: 5px;
     margin: auto;
 }
-.menu li a div {
+.menu-button{
     background-color: green;
     cursor: pointer;
     border-width: initial;
@@ -120,4 +120,51 @@ h1 {
     border-color: black;
     border-image: initial;
     border-radius: 5px;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+}
+.menu-button-modify{
+    width:100%;
+    height:50%;
+}
+.desc-text{
+    width:100%;
+}
+.button-selected{
+    background-color:purple;
+    color:yellow;
+}
+.left{
+    position:absolute;
+    left:2%;
+    overflow-y:auto;
+}
+.middle{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,0);
+    overflow-y:auto;
+}
+.right{
+    position:absolute;
+    right:2%;
+    overflow-y:auto;
+}
+
+#footer{
+    width:100%;
+    height:auto;
+    text-align: center;
+    bottom: 1%;
+    z-index:100;
+    position:fixed;
+    font-size:30px;
+}
+#footer a{
+    display:inline-block;
+    width:10%;
+    height:100%;
 }

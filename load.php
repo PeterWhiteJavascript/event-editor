@@ -1,3 +1,8 @@
+<?php
+
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,15 +13,25 @@
         <div id="wrapper">
             <div id="title"><h1>LOAD</h1></div>
             <div id="content">
-                <ul class="menu">
-                    <li><a href="load.php"><div>LOAD</div></a></li>
-                    <li><a href="new.php"><div>NEW</div></a></li>
-                    <li><a href="script.php"><div>SCRIPT</div></a></li>
-                    <li><a href="options.php"><div>OPTIONS</div></a></li>
-                    <li><a href="help.php"><div>HELP</div></a></li>
-                    <li><a href="about.php"><div>ABOUT</div></a></li>
+                <ul id="load-scene" class="menu left">
+                    <?php
+                    //use for loop to show any scenes that have been created
+                    ?>
                 </ul>
+                <div id="load-desc" class="menu middle">
+                    <!--Show the first description-->
+                    
+                </div>
+                <ul id="load-opts" class="menu right">
+                    <li><a id="open-scene"><div class="menu-button">Open Scene</div></a></li>
+                    <li><a id="create-new-scene"><div class="menu-button">Create New Scene</div></a></li>
+                    <li><a id="rename-scene"><div class="menu-button">Rename Scene</div></a></li>
+                    <li><a id="edit-desc"><div class="menu-button">Edit Description</div></a></li>
+                    <li><a id="delete-scene"><div class="menu-button">Delete Scene</div></a></li>
+                </ul>
+                <div id="footer"><a href="index.php"><div class="menu-button">BACK</div></a></div>
             </div>
-        </div>        
+        </div>
+        <script src="js/load.js"></script>
     </body>
 </html>
