@@ -98,7 +98,7 @@ h1 {
     font-size: 34px;
     background-color: red;
     width: 25%;
-    height: 50%;
+    height: 60%;
     text-align: center;
     border-width: initial;
     border-style: solid;
@@ -132,6 +132,12 @@ h1 {
 }
 .desc-text{
     width:100%;
+}
+.desc-foot{
+    position:absolute;
+    bottom:5px;
+    left:50%;
+    transform:translate(-50%,0);
 }
 .button-selected{
     background-color:purple;

@@ -1,60 +1,73 @@
 //This will be filled with php for already made scenes
-var scenes = [];
+var events = [];
 
-//Store the scene that has been clicked on
-var selectedScene;
+//Store the event that has been clicked on
+var selectedEvent;
 
 $(function(){
     //START OPTS BUTTONS
-    $('#open-scene').click( function(e) {
-        console.log(selectedScene);
-        alert("TO DO: save any created scenes");
-        window.location = "show-events.php";
+    $('#edit-event').click( function(e) {
+        console.log(selectedEvent);
+        alert("TO DO: save events and display the map.");
     });
-    $('#create-new-scene').click( function(e) {
+    $('#new-event').click( function(e) {
         //Remove the current description
-        $("#load-desc div").remove();
+        $("#show-desc div").remove();
         //Create the scene name
-        $("#load-scene").append('<li><a class="scene-button"><input class="menu-button-modify" placeholder="New Scene"></input></a></li>');
-        scenes.push({name:"New Scene",desc:"Lorem ipsum dolor"});
-        $("#load-scene li a").last().trigger("click");
+        $("#show-events").append('<li><a class="scene-button"><input class="menu-button-modify" placeholder="New Scene"></input></a></li>');
+        events.push({name:"New Scene",desc:"Lorem ipsum dolor"});
+        $("#show-events li a").last().trigger("click");
     });
-    $('#rename-scene').click( function(e) {
-        $(selectedScene).trigger('rename');
+    
+    $('#copy-event').click( function(e) {
+        
+    });
+    
+    $('#move-event').click( function(e) {
+        
+    });
+    
+    $('#change-scene').click( function(e) {
+        
+    });
+    $('#rename-event').click( function(e) {
+        $(selectedEvent).trigger('rename');
     });
     $('#edit-desc').click( function(e) {
-        $("#load-desc").trigger('rename-desc');
+        $("#show-desc").trigger('rename-desc');
     });
-    $('#delete-scene').click( function(e) {
+    $('#delete-event').click( function(e) {
         var yes = confirm("Really delete?");
         if(yes){
-            $(selectedScene).trigger('delete');
+            $(selectedEvent).trigger('delete');
         }
         if($(".scene-button").first()){
-            selectedScene = $(".scene-button").first();
-            $(selectedScene).trigger("click");
+            selectedEvent = $(".scene-button").first();
+            $(selectedEvent).trigger("click");
         } else {
-            selectedScene = false;
+            selectedEvent = false;
         }
     });
     //END OPTS BUTTONS
     //When an individual scene is clicked
     $(document).on("click",".scene-button",function(e){
-        selectedScene = this;
+        selectedEvent = this;
         $(".button-selected").removeClass("button-selected");
         $(this).children(":first").addClass('button-selected');
         //Remove description that is there
-        $("#load-desc div").remove();
+        $("#show-desc div").remove();
         //Show the description for the scene
-        var idx = $(".scene-button").index(selectedScene);
-        var desc = scenes[idx].desc;
-        $("#load-desc").append('<div class="desc-text">'+desc+'</div>');
+        var idx = $(".scene-button").index(selectedEvent);
+        var desc = events[idx].desc;
+        var kind = events[idx].kind;
+        $("#show-desc").append('<div class="desc-text">'+desc+'</div>');
+        $("#show-desc").append('<div class="desc-foot">'+kind+'</div>');
     });
     
     //Delete a scene
     $(document).on("delete",".scene-button",function(e){
         $(this).parent().remove();
-        $("#load-desc").children(":first").remove();
+        $("#show-desc").children(":first").remove();
     });
     //Renaming a scene
     $(document).on("rename",".scene-button",function(e){
@@ -81,13 +94,13 @@ $(function(){
     });
     
     //Renaming desc
-    $(document).on("rename-desc","#load-desc",function(e){
+    $(document).on("rename-desc","#show-desc",function(e){
         $(this).children(":first").remove();
         $(this).append('<textarea class="menu-desc-modify" placeholder="Description"></textarea>');
     });
-    $(document).on("renamed-desc","#load-desc",function(e){
+    $(document).on("renamed-desc","#show-desc",function(e){
         var text = $(this).children(":first").val();
-        scenes[$(".scene-button").index(selectedScene)].desc = text;
+        events[$(".scene-button").index(selectedEvent)].desc = text;
         $(this).append('<div class="desc-text">'+text+'</div>');
         $(this).children(":first").remove();
         return false;
@@ -101,14 +114,13 @@ $(function(){
         }
     });
     
-    //Fill the scenes array
-    var sc = $("#load-scene").children();
-    for(var i=0;i<sc.length;i++){
-        scenes.push({name:$(sc[i]).attr("name"),desc:$(sc[i]).attr("desc")});
+    //Fill the events array
+    var ev = $("#show-events").children();
+    for(var i=0;i<ev.length;i++){
+        events.push({name:$(ev[i]).attr("name"),desc:$(ev[i]).attr("desc"),kind:$(ev[i]).attr("kind")});
     }
     //Default to top item being selected
     $(".scene-button").first().trigger("click");
     
 });
-
 
