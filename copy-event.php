@@ -2,7 +2,31 @@
 $name = $_POST['name'];
 $scene = $_POST['scene'];
 
-//TODO: Copy the posted event (by name) and rename to be unique
+
+$directory = 'data/events/'.$scene;
+//Get the event
+$event = json_decode(file_get_contents($directory."/".$name.'.json'), true);
+
+//Make sure there's no other event with this name in this folder
+$scanned_directory = array_diff(scandir($directory), array('..', '.'));
+
+$num = 0;
+while(in_array($name."(".$num.")".'.json', $scanned_directory)){
+    $num++;
+}
+$event['name'] = $name."(".$num.")";
+// encode array to json
+$json = json_encode($event);
+
+//write json to file
+if (file_put_contents($directory.'/'.$name."(".$num.")".'.json', $json)){
+    //Add the file to the order
+    $sceneData = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true);
+    $sceneData['eventOrder'][] = $name."(".$num.")";
+    file_put_contents("data/scenes/".$scene.'.json', json_encode($sceneData));
+} else {
+    echo "Oops! Error creating json file...";
+}
 
 ?>
 <!DOCTYPE html>

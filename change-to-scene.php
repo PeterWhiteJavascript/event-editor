@@ -2,7 +2,22 @@
 $event = $_POST["event"];
 $from = $_POST["from"];
 $scene = $_POST["scene"];
-//Move the event from the "from" scene to the "scene" scene.
+//Make a copy of the event in the new folder
+$eventFile = file_put_contents('data/events/'.$scene.'/'.$event.'.json', file_get_contents("data/events/".$from."/".$event.'.json'), true);
+//Delete the file from the original location
+unlink('data/events/'.$from.'/'.$event.".json");
+
+//Remove the event from the order in the old scene
+$sceneData = json_decode(file_get_contents("data/scenes/".$from.'.json'), true);
+if (($key = array_search($event, $sceneData['eventOrder'])) !== false) {
+    unset($sceneData['eventOrder'][$key]);
+}
+file_put_contents("data/scenes/".$from.'.json', json_encode($sceneData));
+
+//Add the event to the new scene's event order
+$sceneData2 = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true);
+$sceneData2['eventOrder'][] = $event;
+file_put_contents("data/scenes/".$scene.'.json', json_encode($sceneData2));
 
 ?>
 

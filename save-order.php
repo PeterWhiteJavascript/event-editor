@@ -3,8 +3,9 @@ $scene = $_POST['scene'];
 //Save the order of events in a scene
 $order = $_POST['order'];
 
-print_r($order);
-
+$sceneData = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true);
+$sceneData['eventOrder'] = $order;
+file_put_contents("data/scenes/".$scene.'.json', json_encode($sceneData));
 ?>
 <!DOCTYPE html>
 <html>

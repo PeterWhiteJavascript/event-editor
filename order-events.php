@@ -1,7 +1,20 @@
 <?php
 $scene = $_POST['scene'];
-//TO DO: Get all of the scenes from JSON
 
+$directory = "data/events/".$scene;
+//Get the events
+$events = array_diff(scandir($directory), array('..', '.'));
+$eventOrder = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true)['eventOrder'];
+
+$sorted = [];
+//Sort the files by the eventsOrder
+forEach($eventOrder as $name){
+    forEach($events as $file){
+        if($file == $name.'.json'){
+            $sorted[] = $file;
+        }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -16,11 +29,11 @@ $scene = $_POST['scene'];
             <div id="content">
                 
                 <ul id="sortable" class="menu middle-left">
-                    <!-- SAMPLE LI -->
-                    <li name="Event 1"><a class="scene-button"><div class="menu-button">Event 1</div></a></li>
-                    <li name="Event 2"><a class="scene-button"><div class="menu-button">Event 2</div></a></li>
                     <?php
-                        //Loop through all of the scenes and show them here
+                        foreach($sorted as $file) {
+                            $data = json_decode(file_get_contents($directory.'/'.$file), true);
+                            echo '<li name="'.$data['name'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                        }
                     ?>
                 </ul>
                 

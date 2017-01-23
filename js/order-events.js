@@ -1,5 +1,7 @@
 $( function() {
-    $( "#sortable" ).sortable();
+    $( "#sortable" ).sortable({
+        axis: "y"
+    });
     $( "#sortable" ).disableSelection();
   
     $('#save-order').click( function(e) {

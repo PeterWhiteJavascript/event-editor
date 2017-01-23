@@ -1,8 +1,16 @@
 <?php
 $scene = $_POST["scene"];
 $name = $_POST["name"];
-//TO DO: Delete this event.
-//Event must be deleted from the events folder and then the combined file must be recompiled.
+//Delete the file
+$directory = 'data/events/'.$scene;
+unlink($directory.'/'.$name.".json");
+//Remove the event from the order in the scene
+$sceneData = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true);
+if (($key = array_search($name, $sceneData['eventOrder'])) !== false) {
+    unset($sceneData['eventOrder'][$key]);
+}
+
+file_put_contents("data/scenes/".$scene.'.json', json_encode($sceneData));
 
 ?>
 <!DOCTYPE html>

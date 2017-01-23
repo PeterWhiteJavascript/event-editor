@@ -1,6 +1,8 @@
 <?php
 $scene = $_POST["scene"];
 $event = $_POST["event"];
+$directory = 'data/scenes';
+$scanned_directory = array_diff(scandir($directory), array('..', '.'));
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,10 +17,11 @@ $event = $_POST["event"];
             <div id="content">
                 <ul class="menu middle-left">
                     <div>Select the new scene</div>
-                    <li><a class="scene-button"><div class="menu-button">Act 1</div></a></li>
-                    <li><a class="scene-button"><div class="menu-button">Act 2</div></a></li>
                     <?php
-                        //Loop through all scenes and display them
+                    foreach($scanned_directory as $file) {
+                        $data = json_decode(file_get_contents($directory.'/'.$file), true);
+                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                    }
                     ?>
                 </ul>
                 
