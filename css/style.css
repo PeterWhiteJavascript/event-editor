@@ -148,9 +148,21 @@ h1 {
     left:2%;
     overflow-y:auto;
 }
+.middle-left{
+    position:absolute;
+    left:33%;
+    transform:translate(-50%,0);
+    overflow-y:auto;
+}
 .middle{
     position:absolute;
     left:50%;
+    transform:translate(-50%,0);
+    overflow-y:auto;
+}
+.middle-right{
+    position:absolute;
+    left:66%;
     transform:translate(-50%,0);
     overflow-y:auto;
 }

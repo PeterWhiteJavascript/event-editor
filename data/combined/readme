@@ -1,0 +1,4 @@
+This is where the scenes and their events get combined into one file
+When we want to merge changes into the main game, we'll just have to copy one file over.
+
+TO DO: In the main project, put all events and scenes into one file.

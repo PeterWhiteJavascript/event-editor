@@ -1,0 +1,32 @@
+{
+    "name": "Post Battle",
+    "desc": "The battle scene after battle",
+    "kind": "battleScene",
+    "battleScene":{
+        "interaction":[
+            {"func":"setView","props":[2]},
+            {"func":"moveAlong","props":[2,[[17,22],[14,22],[14,11]],"up",{"func":"allowCycle","obj":"text"}]},
+            {"text":["Doot da doo!"],"asset":["skirm.png"],"pos":"left","autoCycle":180},
+            {"text":["Doooooo!"],"asset":["skirm.png"],"pos":"left","autoCycle":90},
+            {"text":["Eyahooo!"],"asset":["skirm.png"],"pos":"left","noCycle":true},
+            {"func":"hideDialogueBox","props":[]},
+            {"func":"centerView","props":[0,1],"wait":true},
+            {"func":"changeMusic","props":["prebattle.mp3"],"wait":true},
+            {"func":"moveAlong","props":[1,[[17,14],{"func":"forceCycle","obj":"text"},[15,14],[15,13]],"up"]},
+            {"func":"moveAlong","props":[0,[[14,15],[14,13]],"up",{"func":"forceCycle","obj":"text"}]},
+            {"text":["Hehehehehehe"],"asset":["shini.jpg",false],"pos":"left","noCycle":true},
+            {"text":["Mehehehehehe"],"asset":[false,"l.jpg"],"pos":"right","noCycle":true},
+            {"func":"changeDir","props":[2,"down"]},
+            {"text":["Uwah!","You two surprised me!","I'm gonna beat you both up now!","UWU"],"asset":["skirm.png",false],"pos":"left"},
+            
+            {"func":"loadEvent","props":["Battle","battle"]}
+        ],
+        "music":"the_usual.mp3",
+        "map":"demo0.tmx",
+        "initialChars":[
+            {"loc":[24,15],"charClass":"archer","dir":"up","storyId":0},
+            {"loc":[24,14],"charClass":"barbarian","dir":"down","storyId":1},
+            {"loc":[17,29],"name":"Alex","dir":"left","storyId":2,"team":"ally"}
+        ]
+    }
+}
