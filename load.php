@@ -17,7 +17,7 @@ $scanned_directory = array_diff(scandir($directory), array('..', '.'));
                     <?php
                     foreach($scanned_directory as $file) {
                         $data = json_decode(file_get_contents($directory.'/'.$file), true);
-                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'"><a class="scene-button"><div class="menu-button btn btn-default">'.$data['name'].'</div></a></li>';
                     }
                     ?>
                 </ul>
@@ -25,13 +25,13 @@ $scanned_directory = array_diff(scandir($directory), array('..', '.'));
                     <!--The first description is shown with js-->
                     <div class="desc-text"></div>
                 </div>
-                <ul class="menu right">
-                    <li><a id="open-scene"><div class="menu-button">Open Scene</div></a></li>
-                    <li><a id="edit-scene"><div class="menu-button">Edit Scene</div></a></li>
-                    <li><a id="delete-scene"><div class="menu-button">Delete Scene</div></a></li>
-                    <li><a id="create-new-scene"><div class="menu-button">Create New Scene</div></a></li>
+                <ul class="menu right btn-group">
+                    <li><a id="open-scene"><div class="menu-button btn btn-default">Open Scene</div></a></li>
+                    <li><a id="edit-scene"><div class="menu-button btn btn-default">Edit Scene</div></a></li>
+                    <li><a id="delete-scene"><div class="menu-button btn btn-default">Delete Scene</div></a></li>
+                    <li><a id="create-new-scene"><div class="menu-button btn btn-default">Create New Scene</div></a></li>
                 </ul>
-                <div id="footer"><a href="index.php"><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a href="index.php"><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
         <script src="js/load.js"></script>

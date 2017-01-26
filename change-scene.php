@@ -20,15 +20,15 @@ $scanned_directory = array_diff(scandir($directory), array('..', '.'));
                     <?php
                     foreach($scanned_directory as $file) {
                         $data = json_decode(file_get_contents($directory.'/'.$file), true);
-                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'"><a class="scene-button"><div class="menu-button btn btn-default">'.$data['name'].'</div></a></li>';
                     }
                     ?>
                 </ul>
                 
                 <ul class="menu middle-right">
-                    <li><a id="save-move"><div class="menu-button">Move to Selected Scene</div></a></li>
+                    <li><a id="save-move"><div class="menu-button btn btn-default">Move to Selected Scene</div></a></li>
                 </ul>
-                <div id="footer"><a><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
         <script src="js/change-scene.js"></script>

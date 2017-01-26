@@ -22,7 +22,7 @@ $desc = $_POST['desc'];
                         <input type="submit" value="Edit Scene">
                     </form>
                 </div>
-                <div id="footer"><a href="load.php"><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a href="load.php"><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
     </body>

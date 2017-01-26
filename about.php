@@ -17,7 +17,7 @@
                         </a>
                     </li>
                 </ul>
-                <div id="footer"><a href="index.php"><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a href="index.php"><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>        
     </body>

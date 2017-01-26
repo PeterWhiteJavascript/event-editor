@@ -51,8 +51,8 @@ $(function(){
     //When an individual scene is clicked
     $(document).on("click",".scene-button",function(e){
         selectedEvent = this;
-        $(".button-selected").removeClass("button-selected");
-        $(this).children(":first").addClass('button-selected');
+        $(".menu-button.active").removeClass("active");
+        $(this).children(":first").addClass('active');
         //Remove description that is there
         $("#show-desc div").remove();
         //Show the description for the scene

@@ -10,8 +10,8 @@ $(function(){
     //When an individual scene is clicked
     $(document).on("click",".scene-button",function(e){
         selectedScene = this;
-        $(".button-selected").removeClass("button-selected");
-        $(this).children(":first").addClass('button-selected');
+        $(".menu-button.active").removeClass("active");
+        $(this).children(":first").addClass('active');
     });
     //Default to top item being selected
     $(".scene-button").first().trigger("click");

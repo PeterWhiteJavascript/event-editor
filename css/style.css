@@ -82,7 +82,7 @@ h1 {
     font-family:"Palatino Linotype";
     font-size: 58px;
     text-align: center;
-    background-color: red;
+    background-color: #ddd;
     color: black;
     padding: 5px;
     border-width: initial;
@@ -95,9 +95,9 @@ h1 {
     margin-left:2%;
 }
 
-.menu { 
+.menu {
     font-size: 34px;
-    background-color: red;
+    background-color: #f5f5f5;
     width: 25%;
     height: 60%;
     text-align: center;
@@ -110,7 +110,7 @@ h1 {
 }
 .small-menu{
     font-size: 22px;
-    background-color: red;
+    background-color: #fbfbfb;
     width: 10%;
     height: 25%;
     text-align: center;
@@ -126,8 +126,11 @@ h1 {
     padding: 5px;
     margin: auto;
 }
+.btn {
+	font-size: initial;
+}
 .menu-button{
-    background-color: green;
+    width: 100%;
     cursor: pointer;
     border-width: initial;
     border-style: solid;
@@ -152,10 +155,6 @@ h1 {
     bottom:5px;
     left:50%;
     transform:translate(-50%,0);
-}
-.button-selected{
-    background-color:purple;
-    color:yellow;
 }
 .left{
     position:absolute;

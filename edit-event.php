@@ -30,7 +30,7 @@ else {
     <body>
         <!--This is the options menu for the editor-->
         <ul class="small-menu left draggable">
-            <li><a id="create-new-interaction"><div class="menu-button">Create New Interaction</div></a></li>
+            <li><a id="create-new-interaction"><div class="menu-button btn btn-default">Create New Interaction</div></a></li>
         </ul>
         <script src="js/edit-event.js"></script>
     </body>

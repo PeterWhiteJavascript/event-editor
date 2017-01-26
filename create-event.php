@@ -47,7 +47,7 @@ if(isset($_POST['name'])){
                         <input type="submit" value="Create/Edit Scene">
                     </form>
                 </div>
-                <div id="footer"><a><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
         <script src="js/create-event.js"></script>

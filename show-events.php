@@ -29,20 +29,20 @@ forEach($order as $name){
                     <?php
                     foreach($sorted as $file) {
                         $data = json_decode(file_get_contents($directory.'/'.$file), true);
-                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'" kind="'.$data['kind'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                        echo '<li name="'.$data['name'].'" desc="'.$data['desc'].'" kind="'.$data['kind'].'"><a class="scene-button"><div class="menu-button btn btn-default">'.$data['name'].'</div></a></li>';
                     }
                     ?>
                 </ul>
                 <div id="show-desc" class="menu middle"></div>
                 <ul class="menu right">
-                    <li><a id="edit-event"><div class="menu-button">Edit Event</div></a></li>
-                    <li><a id="new-event"><div class="menu-button">New Event</div></a></li>
-                    <li><a id="copy-event"><div class="menu-button">Copy Event</div></a></li>
-                    <li><a id="order-events"><div class="menu-button">Order Events</div></a></li>
-                    <li><a id="change-scene"><div class="menu-button">Change Scene</div></a></li>
-                    <li><a id="delete-event"><div class="menu-button">Delete Event</div></a></li>
+                    <li><a id="edit-event"><div class="menu-button btn btn-default">Edit Event</div></a></li>
+                    <li><a id="new-event"><div class="menu-button btn btn-default">New Event</div></a></li>
+                    <li><a id="copy-event"><div class="menu-button btn btn-default">Copy Event</div></a></li>
+                    <li><a id="order-events"><div class="menu-button btn btn-default">Order Events</div></a></li>
+                    <li><a id="change-scene"><div class="menu-button btn btn-default">Change Scene</div></a></li>
+                    <li><a id="delete-event"><div class="menu-button btn btn-default">Delete Event</div></a></li>
                 </ul>
-                <div id="footer"><a href="load.php"><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a href="load.php"><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
         <script src="js/load-events.js"></script>

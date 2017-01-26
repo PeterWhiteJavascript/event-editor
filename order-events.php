@@ -32,15 +32,15 @@ forEach($eventOrder as $name){
                     <?php
                         foreach($sorted as $file) {
                             $data = json_decode(file_get_contents($directory.'/'.$file), true);
-                            echo '<li name="'.$data['name'].'"><a class="scene-button"><div class="menu-button">'.$data['name'].'</div></a></li>';
+                            echo '<li name="'.$data['name'].'"><a class="scene-button"><div class="menu-button btn btn-default">'.$data['name'].'</div></a></li>';
                         }
                     ?>
                 </ul>
                 
                 <ul class="menu middle-right">
-                    <li><a id="save-order"><div class="menu-button">Save Order</div></a></li>
+                    <li><a id="save-order"><div class="menu-button btn btn-default">Save Order</div></a></li>
                 </ul>
-                <div id="footer"><a><div class="menu-button">BACK</div></a></div>
+                <div id="footer"><a><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
         <script src="js/order-events.js"></script>
