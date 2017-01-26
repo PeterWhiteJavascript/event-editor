@@ -7,15 +7,15 @@ var selectedEvent;
 $(function(){
     //START OPTS BUTTONS
     $('#edit-event').click( function(e) {
-        alert("TO DO: Load the event editor");
+        var scene = $("#title").text();
         var name = $(selectedEvent).parent().attr("name");
-        var form = $('<form action="create-event.php" method="post"><input type="text" name="name" value="'+name+'"></form>');
+        var form = $('<form action="create-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
         form.submit();
     });
     $('#new-event').click( function(e) {
-        //TO DO: load the event editor
-        alert("TO DO: Load the event editor");
-        window.location = "create-event.php";
+        var scene = $("#title").text();
+        var form = $('<form action="create-event.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
+        form.submit();
     });
     
     $('#copy-event').click( function(e) {
@@ -60,7 +60,7 @@ $(function(){
         var desc = events[idx].desc;
         var kind = events[idx].kind;
         $("#show-desc").append('<div class="desc-text">'+desc+'</div>');
-        $("#show-desc").append('<div class="desc-foot">'+kind+'</div>');
+        $("#show-desc").append('<div class="desc-foot">Type:'+kind+'</div>');
     });
     
     //Fill the events array

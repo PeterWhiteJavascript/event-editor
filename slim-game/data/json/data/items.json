@@ -1,0 +1,20 @@
+{
+    "potion":{
+        "name": "Potion",
+        "desc": "Heals 20 hp",
+        "kind": "consumable",
+        "range":["self",1],
+        "effect":{
+            "func":"healHp",
+            "props":[20],
+            "accuracy":100
+        }
+    },
+    "goldCoin":{
+        "name": "Gold Coin",
+        "desc": "A valuable coin",
+        "kind":"key",
+        "effect":""
+    }
+    
+}

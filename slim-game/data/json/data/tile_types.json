@@ -1,0 +1,51 @@
+{
+    "impassable":{
+        "name":"Impassable",
+        "move":0,
+        "buff":"",
+        "effect":{"stat":"","amount":0}
+    },
+    "grass":{
+        "name":"Grass",
+        "move":1,
+        "buff":"",
+        "effect":{"stat":"","amount":0}
+    },
+    "dirt":{
+        "name":"Dirt",
+        "move":1,
+        "buff":"",
+        "effect":{"stat":"","amount":0}
+    },
+    "sand":{
+        "name":"Sand",
+        "move":2,
+        "buff":"Crit +20%",
+        "effect":{"stat":"criticalChance","amount":1.2}
+    },
+    "water":{
+        "name":"Water",
+        "move":2,
+        "buff":"Armour +20%",
+        "required":"waterWalk",
+        "effect":{"stat":"armour","amount":1.2}
+    },
+    "rock":{
+        "name":"Rock",
+        "move":3,
+        "buff":"Damage +30%",
+        "effect":{"stat":"damage","amount":1.3}
+    },
+    "road":{
+        "name":"Road",
+        "move":1,
+        "buff":"Speed +20%",
+        "effect":{"stat":"speed","amount":1.2}
+    },
+    "desert":{
+        "name":"Desert",
+        "move":2,
+        "buff":"Parry -20%",
+        "effect":{"stat":"parry","amount":-0.8}
+    }
+}

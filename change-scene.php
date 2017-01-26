@@ -12,7 +12,7 @@ $scanned_directory = array_diff(scandir($directory), array('..', '.'));
     </head>
     <body>
         <div id="wrapper">
-            <div id="subtitle"><h2><?php echo $scene; ?></h2></div>
+            <div id="subtitle" hidden><h2><?php echo $scene; ?></h2></div>
             <div id="title"><h1><?php echo $event; ?></h1></div>
             <div id="content">
                 <ul class="menu middle-left">

@@ -17,8 +17,8 @@ $desc = $_POST['desc'];
                         Scene Name<br>
                         <input type="text" name="name" value="<?php echo $scene; ?>"><br>
                         Description<br>
-                        <input type="text" name="desc" value="<?php echo $desc; ?>"><br>
-                        <input type="hidden" name="origName" value="<?php echo $scene; ?>"><br>
+                        <textarea type="text" name="desc" value="<?php echo $desc; ?>"></textarea><br>
+                        <input type="hidden" name="origName" value="<?php echo $scene; ?>">
                         <input type="submit" value="Edit Scene">
                     </form>
                 </div>

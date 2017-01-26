@@ -1,0 +1,23 @@
+Normal text
+{"text":["Le switcheroo!","On to battle!"],"asset":["shini.jpg","l.jpg"],"pos":"left"}
+
+Loading the battle after text is done
+{"func":"loadBattle","props":[]}
+
+Change the background image
+{"func":"changeBg","props":["bg/city.jpg"]}
+
+Add the quest to the accepted quests array
+{"func":"acceptQuest","props":[]}
+
+When dialogue is finished. Takes the user back to the last menu they were in.
+{"func":"finished","props":[]}
+
+Loads the menus for a certain area. Props are location name and current menu. This allows you to start in a different menu sometimes.
+{"func":"loadLocation","props":["homeland_forest","start"]}
+
+Creates a confirmation menu with a few options. next is the next dialogue to display and text is what label is displayed for this option.
+{"func":"confirmation","props":[[{"next":"yes","text":"Sure"},{"next":"no","text":"No Way"},{"next":"maybe","text":"I dunno"}]]}
+
+Displays another set of dialogue. Could be modified to check a value and change the text path. props[0] is the name of the next dialogue.
+{"func":"moreDialogue","props":["testerinoDialogino"]}

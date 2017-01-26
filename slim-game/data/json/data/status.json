@@ -1,0 +1,11 @@
+{
+    "sturdy":{
+        "desc":"The user protects themselves for one turn which increases their defense."
+    },
+    "poison":{
+        "desc":"Each turn, the character affected takes 1/8th of their maximum hp in damage."
+    },
+    "blind":{
+        "desc":"A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A "
+    }
+}

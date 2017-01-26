@@ -1,0 +1,46 @@
+{
+    "bgs":["bg/forest.jpg"],
+    "chars":["story/l.jpg"],
+    "maps":["homeland.tmx"],
+    "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3"],
+    "dialogue":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["Let's help this guy out!","Come on, step it up!"],"asset":["l.jpg",false],"pos":"left"},
+            {"text":["And now there's two of me...","Time to fight!"],"asset":["l.jpg","l.jpg"],"pos":"left"},
+            {"func":"loadBattle","props":["battle"]}
+        ]
+        
+    },
+    "battle":{
+        "music":"battle.mp3",
+        "map":"homeland.tmx",
+        "winScene":"victory",
+        "loseScene":"defeat",
+        "placementSquares":[[3,1],[3,2],[3,3],[4,1],[4,2],[4,3]],
+        "enemies":[
+            {"loc":[8,5],"charClass":"archer","level":1,"equipmentRank":1},
+            {"loc":[8,4],"charClass":"barbarian","level":1,"equipmentRank":1}
+        ],
+        "interactables":[
+            
+        ]
+    },
+    "victory":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["GG EZ","Back to town"],"asset":[false,"l.jpg"],"pos":"right"},
+            {"func":"loadLocation","props":["homeland_forest","start"]}
+        ]
+    },
+    "defeat":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["LOST the GAME!"],"asset":["l.jpg",false],"pos":"left"},
+            {"func":"doDefeat","props":["THIS FUNCTION IS NOT DONE YET"]}
+        ]
+    }
+}

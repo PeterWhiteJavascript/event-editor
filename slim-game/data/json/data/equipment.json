@@ -1,0 +1,232 @@
+{
+    "weapon":{
+        "ironNail":{
+            "name":"Iron Nail",
+            "desc":"I guess this counts as a dagger.",
+            "rank":1,
+            "equipmentType":"dagger",
+            "damageLow":5,
+            "damageHigh":10,
+            "speed":10,
+            "reach":1,
+            "range":1,
+            "wield":10
+        },
+        "ironDagger":{
+            "name":"Iron Dagger",
+            "desc":"A very common iron dagger.",
+            "rank":1,
+            "equipmentType":"dagger",
+            "damageLow":12,
+            "damageHigh":16,
+            "speed":10,
+            "reach":3,
+            "range":1,
+            "wield":6
+        },
+        
+        "woodenSword":{
+            "name":"Wooden Sword",
+            "desc":"A wooden sword",
+            "rank":1,
+            "equipmentType":"sword",
+            "damageLow":15,
+            "damageHigh":20,
+            "speed":10,
+            "reach":3,
+            "range":1,
+            "wield":5
+        },
+        "wetNoodle":{
+            "name":"Wet Noodle",
+            "desc":"A wet noodle",
+            "rank":1,
+            "equipmentType":"sword",
+            "damageLow":10,
+            "damageHigh":50,
+            "speed":20,
+            "reach":10,
+            "range":2,
+            "wield":10
+        },
+        "banana":{
+            "name":"Banana",
+            "desc":"A red banana",
+            "rank":1,
+            "equipmentType":"sword",
+            "damageLow":10,
+            "damageHigh":20,
+            "speed":50,
+            "reach":1,
+            "range":1,
+            "wield":2
+        },
+        "bronzeSword":{
+            "name":"Bronze Sword",
+            "desc":"A pretty nice bronze sword",
+            "rank":2,
+            "equipmentType":"sword",
+            "damageLow":20,
+            "damageHigh":35,
+            "speed":10,
+            "reach":3,
+            "range":1,
+            "wield":8
+        },
+        
+        "stoneAxe":{
+            "name":"Stone Axe",
+            "desc":"A stone axe straight from the stone age!",
+            "rank":1,
+            "equipmentType":"axe",
+            "damageLow":15,
+            "damageHigh":30,
+            "speed":5,
+            "reach":2,
+            "wield":18,
+            "range":1,
+            "twoHanded":true
+        },
+        "greatAxe":{
+            "name":"Great Axe",
+            "desc":"A large axe",
+            "rank":2,
+            "equipmentType":"axe",
+            "damageLow":30,
+            "damageHigh":60,
+            "speed":10,
+            "reach":2,
+            "wield":15,
+            "range":1,
+            "twoHanded":true
+        },
+        
+        "woodenSpear":{
+            "name":"Wooden Spear",
+            "desc":"A wooden spear",
+            "rank":1,
+            "equipmentType":"spear",
+            "damageLow":12,
+            "damageHigh":24,
+            "speed":10,
+            "reach":10,
+            "range":2,
+            "wield":5
+        },
+        "ironSpear":{
+            "name":"Iron Spear",
+            "desc":"An iron spear",
+            "rank":2,
+            "equipmentType":"spear",
+            "damageLow":16,
+            "damageHigh":28,
+            "speed":15,
+            "reach":10,
+            "range":2,
+            "wield":6
+        },
+        
+        "woodenBow":{
+            "name":"Wooden Bow",
+            "desc":"A standard bow and arrow set",
+            "rank":1,
+            "equipmentType":"bow",
+            "damageLow":10,
+            "damageHigh":15,
+            "speed":20,
+            "reach":1,
+            "wield":5,
+            "range":5,
+            "twoHanded":true
+        },
+        "ironBow":{
+            "name":"Iron Bow",
+            "desc":"A really good bow and arrow set",
+            "rank":2,
+            "equipmentType":"bow",
+            "damageLow":12,
+            "damageHigh":24,
+            "speed":25,
+            "reach":1,
+            "wield":8,
+            "range":6,
+            "twoHanded":true
+        }
+    },
+    "shield":{
+        "potLid":{
+            "name":"Pot Lid",
+            "desc":"The lid of a pot",
+            "rank":1,
+            "equipmentType":"shield",
+            "defense":1
+        },
+        "woodenShield":{
+            "name":"Wooden Shield",
+            "desc":"A wooden shield",
+            "rank":2,
+            "equipmentType":"shield",
+            "defense":3
+        }
+        
+    },
+    "body":{
+        "shirt":{
+            "name":"Shirt",
+            "desc":"A regular 'ol shirt",
+            "rank":1,
+            "defense":1
+        },
+        "longSleeveShirt":{
+            "name":"Long Sleeve Shirt",
+            "desc":"A shirt with long sleeves.",
+            "rank":1,
+            "defense":2
+        },
+        "leatherArmour":{
+            "name":"Leather Armour",
+            "desc":"Some pretty good armour!",
+            "rank":2,
+            "defense":3
+        }
+    },
+    "feet":{
+        "sandals":{
+            "name":"Sandals",
+            "desc":"Casual footwear",
+            "rank":1,
+            "defense":1
+        },
+        "leatherShoes":{
+            "name":"Leather Shoes",
+            "desc":"Duarable footwear",
+            "rank":2,
+            "defense":2
+        },
+        "movementShoes":{
+            "name":"Movement Shoes",
+            "desc":"Shoes that allow you to go a bit further.",
+            "rank":2,
+            "defense":0,
+            "move":1
+        }
+    },
+    "accessory":{
+        "rubyRing":{
+            "name":"Ruby Ring",
+            "desc":"Probably does something",
+            "rank":1
+        },
+        "earmuffs":{
+            "name":"Earmuffs",
+            "desc":"Keeps your ears warm",
+            "rank":2
+        },
+        "movementCharm":{
+            "name":"Movement Charm",
+            "desc":"Makes you move further!",
+            "rank":2,
+            "move":1
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "enemiesDefeated":{
+        "name":"Enemies Defeated",
+        "desc":"The number of enemies defeated."
+    },
+    "assisted":{
+        "name":"Assisted",
+        "desc":"The number of enemies that this character assisted in defeating."
+    },
+    "battlesParticipated":{
+        "name":"Battles Participated",
+        "desc":"The number of battle this character has participated in."
+    },
+    "damageDealt":{
+        "name":"Damage Dealt",
+        "desc":"The total number of damage dealt."
+    },
+    "damageTaken":{
+        "name":"Damage Taken",
+        "desc":"The total number of damage taken."
+    },
+    "selfHealed":{
+        "name":"Self Healed",
+        "desc":"The total number of healing received."
+    },
+    "targetHealed":{
+        "name":"Target Healed",
+        "desc":"The total number of healing given out."
+    },
+    "timesDied":{
+        "name":"Times Died",
+        "desc":"The total number of times this character has died."
+    },
+    "timesRested":{
+        "name":"Times Rested",
+        "desc":"The number of times this character has rested at an inn."
+    },
+    "value":{
+        "name":"Value",
+        "desc":"Something Something Value Something..."
+    },
+    "method":{
+        "name":"Method",
+        "desc":"Something Method something asd'mas;ldma;sd."
+    }
+}

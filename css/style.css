@@ -79,6 +79,7 @@ body {
     padding: 2%;
 }
 h1 {
+    font-family:"Palatino Linotype";
     font-size: 58px;
     text-align: center;
     background-color: red;
@@ -99,6 +100,19 @@ h1 {
     background-color: red;
     width: 25%;
     height: 60%;
+    text-align: center;
+    border-width: initial;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
+    border-radius: 5px;
+    padding: 10px;
+}
+.small-menu{
+    font-size: 22px;
+    background-color: red;
+    width: 10%;
+    height: 25%;
     text-align: center;
     border-width: initial;
     border-style: solid;

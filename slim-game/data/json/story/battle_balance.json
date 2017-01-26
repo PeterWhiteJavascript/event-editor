@@ -1,0 +1,33 @@
+{
+    "bgs":[],
+    "chars":[],
+    "maps":["battle_balance1.tmx"],
+    "music":["bgm/battle.mp3"],
+    "startScene":["battle1","battle"],
+    "battle1":{
+        "music":"battle.mp3",
+        "map":"battle_balance1.tmx",
+        "victory":{"func":"loadBattle","scene":"battle2"},
+        "defeat":{"func":"loadBattle","scene":"battle2"},
+        "placementSquares":[[13,14,"up"],[14,15,"up"],[14,14,"up"]],
+        "enemies":[
+            {"loc":[13,9],"charClass":"knight","level":1,"equipmentRank":1,"equipmentType":"axe","dir":"down"},
+            {"loc":[14,9],"charClass":"barbarian","level":1,"equipmentRank":1,"equipmentType":"sword","dir":"down"},
+            {"loc":[13,8],"charClass":"barbarian","level":1,"equipmentRank":1,"equipmentType":"spear","dir":"down"},
+            {"loc":[14,8],"charClass":"archer","level":1,"equipmentRank":1,"equipmentType":"bow","dir":"down"}
+        ]
+    },
+    "battle2":{
+        "music":"battle.mp3",
+        "map":"battle_balance1.tmx",
+        "victory":{"func":"loadBattle","scene":"battle2"},
+        "defeat":{"func":"loadBattle","scene":"battle2"},
+        "placementSquares":[[13,14,"up"],[14,15,"up"],[14,14,"up"]],
+        "enemies":[
+            {"loc":[13,9],"charClass":"knight","level":2,"equipmentRank":1,"equipmentType":"spear","dir":"down"},
+            {"loc":[14,9],"charClass":"knight","level":2,"equipmentRank":1,"equipmentType":"sword","dir":"down"},
+            {"loc":[18,8],"charClass":"archer","level":2,"equipmentRank":1,"equipmentType":"bow","dir":"down"},
+            {"loc":[17,8],"charClass":"archer","level":2,"equipmentRank":1,"equipmentType":"bow","dir":"down"}
+        ]
+    }
+}

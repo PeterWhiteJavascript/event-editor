@@ -1,0 +1,72 @@
+{
+    "side_quest1_1":{
+        "bgs":["bg/pub.jpg"],
+        "chars":["story/skirm.png"],
+        "desc":"Help some guy defeat some enemies!",
+        "sceneName":"side_quest1_1",
+        "reward":{"money":100,"items":[["Potion",1],["GoldCoin",1]]},
+        "dialogue":{
+            "bg":"bg/pub.jpg",
+            "interaction":[
+                {"text":["Hi, I need your help defeating these enemies.","It would be cool if you would help."],"asset":[false,"skirm.png"],"pos":"right"},
+                {"func":"confirmation","props":[[{"next":"dialogue/yes","text":"Sure"},{"next":"dialogue/no","text":"No Way"},{"next":"dialogue/maybe","text":"I dunno"}]]}
+            ],
+            "yes":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["Thanks!"],"asset":[false,"skirm.png"],"pos":"right"},
+                    {"func":"acceptQuest","props":["side_quest1_1"]}
+                ]
+            },
+            "no":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["That's too bad..."],"asset":[false,"skirm.png"],"pos":"right"},
+                    {"func":"loadLocation","props":["homeland_forest","start"]}
+                ]
+            },
+            "maybe":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["There is no maybe, baka!"],"asset":[false,"skirm.png"],"pos":"right"},
+                    {"func":"loadLocation","props":["homeland_forest","pub"]}
+                ]
+            }
+        }
+    },
+    "side_quest2_1":{
+        "bgs":["bg/pub.jpg"],
+        "chars":[],
+        "desc":"Some kinda cool quest!",
+        "sceneName":"side_quest2_1",
+        "reward":{"money":100,"items":[["Potion",1],["GoldCoin",1]]},
+        "dialogue":{
+            "bg":"bg/pub.jpg",
+            "interaction":[
+                {"text":["Can you do quest 2_1 pls?"],"asset":[false,false],"pos":"right"},
+                {"func":"confirmation","props":[[{"next":"dialogue/yes","text":"Sure"},{"next":"dialogue/no","text":"No Way"},{"next":"dialogue/maybe","text":"I dunno"}]]}
+            ],
+            "yes":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["Thanks!"],"asset":[false,false],"pos":"right"},
+                    {"func":"acceptQuest","props":["side_quest2_1"]}
+                ]
+            },
+            "no":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["That's too bad..."],"asset":[false,false],"pos":"right"},
+                    {"func":"loadLocation","props":["homeland_forest","start"]}
+                ]
+            },
+            "maybe":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["There is no maybe, baka!"],"asset":[false,false],"pos":"right"},
+                    {"func":"loadLocation","props":["homeland_forest","pub"]}
+                ]
+            }
+        }
+    }
+}

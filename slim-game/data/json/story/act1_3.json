@@ -1,0 +1,135 @@
+{
+    "bgs":["bg/forest.jpg","bg/city.jpg"],
+    "chars":["story/l.jpg","story/shini.jpg","story/pyro.png","story/skirm.png","story/knight.png"],
+    "maps":["demo2.tmx","demo2_battle.tmx"],
+    "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3"],
+    "startScene":["preBattleScene","battleScene"],
+    "preBattleScene":{
+        "interaction":[
+            {"func":"setView","props":[0,true]},
+            
+            {"func":"moveAlong","props":[0,[[6,5]],"down",{"func":"forceCycle","obj":"text"}]},
+            {"func":"moveAlong","props":[1,[[6,4]],"down"]},
+            {"func":"hideDialogueBox","props":[],"noCycle":true},
+            
+            {"func":"waitTime","props":[500],"noCycle":true},
+            {"func":"changeDir","props":[0,"up"]},
+            
+            {"text":["Looks like there are guards up ahead.","We'd better go the other way."],"asset":[false,"skirm.png"],"pos":"right"},
+            
+            {"func":"changeMoveSpeed","props":[0,0.6]},
+            {"func":"changeMoveSpeed","props":[1,0.6]},
+            
+            {"func":"moveAlong","props":[0,[[6,4],[24,3]],"left"]},
+            {"func":"moveAlong","props":[1,[[5,4],[23,3]],"right"]},
+            
+            {"text":["So, umm..."],"asset":[false,"skirm.png"],"pos":"right","autoCycle":80},
+            {"text":["Astrea."],"asset":["pyro.png"],"pos":"left","autoCycle":80},
+            {"text":["Astrea huh.","What brings you to this town?"],"asset":[false,"skirm.png"],"pos":"right","autoCycle":80},
+            {"text":["My husband seeks to take his brother's throne and I have to stop it!"],"asset":["pyro.png"],"pos":"left","autoCycle":120},
+            {"text":["Ah, I see.","You know, my father is the ruler of these lands.","He may be able to help you."],"asset":[false,"skirm.png"],"pos":"right","autoCycle":120},
+            {"text":["Your father...", "He is in grave danger.","We must hurry to the capital."],"asset":["pyro.png"],"pos":"left","autoCycle":80},
+            
+            {"func":"changeMoveSpeed","props":[0,0.3]},
+            {"func":"changeMoveSpeed","props":[1,0.3]},
+            
+            
+            {"func":"moveAlong","props":[0,[[25,6]],"left",{"func":"forceCycle","obj":"text"}]},
+            {"func":"moveAlong","props":[1,[[25,5]],"down"],"noCycle":true},
+            {"func":"changeMusic","props":["prebattle.mp3"],"wait":true},
+            
+            {"text":["Oh!","I don't recognize these knights.","Where are the townspeople?"],"asset":[false,"skirm.png"],"pos":"right"},
+            {"text":["They are knights from my homeland.","We'd best be careful not to show ourselves here."],"asset":["pyro.png"],"pos":"left"},
+            
+            {"func":"moveAlong","props":[0,[[16,2]],"left"]},
+            {"func":"moveAlong","props":[1,[[17,2]],"left"]},
+            
+            {"func":"moveAlong","props":[2,[[6,4],[12,2]],"right",{"func":"forceCycle","obj":"text"}]},
+            {"func":"moveAlong","props":[3,[[5,4],[12,3]],"right"]},
+            
+            {"func":"waitTime","props":[800],"noCycle":true},
+            {"func":"moveAlong","props":[4,[[19,2]],"left"],"noCycle":true},
+            
+            {"text":["Stop where you are!","Who do you think you are, sneaking around back here!","These are Vicanti's lands now!","The king is no more, and soon you will be the same!"],"asset":["knight.png"],"pos":"left"},
+            
+            {"func":"changeDir","props":[0,"right"]},
+            {"func":"changeDir","props":[1,"right"]},
+            
+            {"func":"waitTime","props":[500],"noCycle":true},
+            
+            {"func":"changeDir","props":[0,"left"]},
+            {"func":"changeDir","props":[1,"left"]},
+            
+            {"text":["Looks like we'll have to fight.","Are you okay?"],"asset":["skirm.png"],"pos":"left"},
+            {"text":["Don't worry about me.","Combat is my specialty."],"asset":[false,"pyro.png"],"pos":"right"},
+            
+            {"func":"loadBattle","props":["battle"]}
+            
+        ],
+        "music":"the_usual.mp3",
+        "map":"demo2.tmx",
+        "initialChars":[
+            {"loc":[1,2],"name":"Alex","dir":"right","storyId":0,"team":"ally"},
+            {"loc":[0,2],"name":"Astraea","charClass":"archer","dir":"right","storyId":1,"team":"ally"},
+            
+            {"loc":[5,7],"charClass":"knight","dir":"down","storyId":2},
+            {"loc":[7,7],"charClass":"knight","dir":"down","storyId":3},
+            
+            {"loc":[16,7],"charClass":"knight","dir":"down"},
+            {"loc":[17,7],"charClass":"knight","dir":"down"},
+            {"loc":[18,7],"charClass":"knight","dir":"down"},
+            {"loc":[19,7],"charClass":"knight","dir":"down"},
+            {"loc":[20,7],"charClass":"knight","dir":"down"},
+            
+            {"loc":[16,8],"charClass":"knight","dir":"down"},
+            {"loc":[17,8],"charClass":"knight","dir":"down"},
+            {"loc":[18,8],"charClass":"knight","dir":"down"},
+            {"loc":[19,8],"charClass":"knight","dir":"down"},
+            {"loc":[20,8],"charClass":"knight","dir":"down"},
+            
+            {"loc":[24,7],"charClass":"knight","dir":"down","storyId":4}
+            
+        ]
+    },
+    "battle":{
+        "music":"battle.mp3",
+        "map":"demo2_battle.tmx",
+        "victory":{"func":"loadBattleScene","scene":"victory"},
+        "defeat":{"func":"loadBattleScene","scene":"victory"},
+        "placementSquares":[[12,4,"left"]],
+        "enemies":[
+            {"loc":[15,4],"charClass":"knight","level":1,"equipmentRank":1,"dir":"left"},
+            {"loc":[15,5],"charClass":"knight","level":1,"equipmentRank":1,"dir":"left"},
+            {"loc":[4,4],"charClass":"knight","level":1,"equipmentRank":1,"dir":"right"},
+            {"loc":[4,5],"charClass":"knight","level":1,"equipmentRank":1,"dir":"right"}
+        ],
+        "neutral":[
+            {"loc":[12,5],"dir":"left","name":"astrea"}
+        ],
+        "interactables":[
+
+        ]
+    },
+    "victory":{
+        "interaction":[
+            {"func":"checkAddCharacter","props":["astrea"]},
+            {"func":"setView","props":[0,true]},
+            {"text":["Looks like we won!"],"asset":[false,"skirm.png"],"pos":"right"},
+            {"text":["We must check the town to see if what that knight said about the king is true."],"asset":["pyro.png"],"pos":"left"},
+            
+            {"func":"hideDialogueBox","props":[]},
+            {"func":"moveAlong","props":[1,[[25,5]],"down"]},
+            {"func":"moveAlong","props":[0,[[25,6]],"left",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            
+            {"text":["I don't see any knights.","They must have left.","Let's ask around the town."],"asset":[false,"skirm.png"],"pos":"right"},
+            
+            {"func":"loadLocation","props":["homeland_forest","start"]}
+        ],
+        "music":"the_usual.mp3",
+        "map":"demo2.tmx",
+        "initialChars":[
+            {"loc":[16,2],"name":"Alex","dir":"right","storyId":0,"team":"ally"},
+            {"loc":[16,3],"name":"Astraea","charClass":"archer","dir":"right","storyId":1,"team":"ally"}
+        ]
+    }
+}

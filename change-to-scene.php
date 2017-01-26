@@ -12,7 +12,7 @@ $sceneData = json_decode(file_get_contents("data/scenes/".$from.'.json'), true);
 if (($key = array_search($event, $sceneData['eventOrder'])) !== false) {
     unset($sceneData['eventOrder'][$key]);
 }
-file_put_contents("data/scenes/".$from.'.json', json_encode($sceneData));
+file_put_contents("data/scenes/".$from.".json", json_encode($sceneData));
 
 //Add the event to the new scene's event order
 $sceneData2 = json_decode(file_get_contents("data/scenes/".$scene.'.json'), true);

@@ -1,0 +1,215 @@
+{
+    "bgs":["bg/forest.jpg","bg/city.jpg"],
+    "chars":["story/l.jpg","story/shini.jpg","story/pyro.png","story/skirm.png"],
+    "maps":["homeland.tmx","demo0.tmx"],
+    "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3","bgm/prebattle.mp3"],
+    "startScene":["dialogue","dialogue"],
+    "dialogue":{
+        "music":"homeland.mp3",
+        "bg":"bg/city.jpg",
+        "interaction":[
+            {"text":["Welcome to Greece Lightning! Welcome to Greeece Light5ning! Welcome to Grshereece Lightning! Wregelcome to Greece Lightning! Welvggome to Greece Lightning!","Please press enter to begin your journey :)"],"asset":[false,"pyro.png"],"pos":"right"},
+            {"func":"confirmation","props":[[
+                {"next":"dialogue/battleBalance","text":"Battle Balance"},
+                {"next":"dialogue/preBattle","text":"Act 1"},
+                {"next":"dialogue/battle","text":"Act 1_1 Battle"},
+                {"next":"dialogue/nextAct","text":"Act 1_2"},
+                {"next":"dialogue/thirdAct","text":"Act 1_3"},
+                {"next":"dialogue/thirdActBattle","text":"Act 1_3 Battle"}
+            ]]}
+            
+        ],
+        "readStuff":{
+            "bg":"bg/city.jpg",
+            "interaction":[
+                {"text":["L do you know","Gods of Death","Love Apples?"],"asset":[false,"shini.jpg"],"pos":"right"},
+                {"text":["Wow","Uhh","Bye!"],"asset":["l.jpg","shini.jpg"],"pos":"left"},
+                {"func":"changeBg","props":["bg/forest.jpg"]},
+                {"func":"testFunc","props":["one",2," console.log('I am a cool JSON string that is evaled');","this.getProp('bg')"]},
+                {"text":["Why don't you anwswer some questions just for fun!"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                {"func":"moreDialogue","props":["dialogue/coolQuestions"]}]
+        },
+        "coolQuestions":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["What kind of color do you choose?"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                {"func":"confirmation","props":[[{"next":"dialogue/coolQuestions/yellow","text":"Yellow"},{"next":"dialogue/coolQuestions/red","text":"Red"}]]}
+            ],
+            "yellow":{
+                "bg":"bg/forest.jpg",
+                "interaction":[
+                    {"text":["Yellow is a pretty cool colour!","What's your favourite yellow friut then?"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                    {"func":"confirmation","props":[[{"next":"dialogue/coolQuestions/yellow/yellow_banana","text":"Yellow Banana"},{"next":"dialogue/coolQuestions/yellow/yellow_apple","text":"Yellow Apple"}]]}
+                ],
+                "yellow_banana":{
+                    "bg":"bg/forest.jpg",
+                    "interaction":[
+                        {"text":["Bananas are good!"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                        {"func":"moreDialogue","props":["dialogue/coolQuestions/again"]}
+                    ]
+                },
+                "yellow_apple":{
+                    "bg":"bg/forest.jpg",
+                    "interaction":[
+                        {"text":["Yellow apples are THE BEST!"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                        {"func":"moreDialogue","props":["dialogue/coolQuestions/again"]}
+                    ]
+                }
+                
+            },
+            "red":{
+                "bg":"bg/forest.jpg",
+                "interaction":[
+                    {"text":["Red is not a very good colour...","What kind of red fruit do you like?"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                    {"func":"confirmation","props":[[{"next":"dialogue/coolQuestions/red/red_banana","text":"Red Banana"},{"next":"dialogue/coolQuestions/red/red_apple","text":"Red Apple"}]]}
+                ],
+                "red_banana":{
+                    "bg":"bg/forest.jpg",
+                    "interaction":[
+                        {"text":["Red Bananas don't even exist..."],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                        {"func":"moreDialogue","props":["dialogue/coolQuestions/again"]}
+                    ]
+                },
+                "red_apple":{
+                    "bg":"bg/forest.jpg",
+                    "interaction":[
+                        {"text":["Red apples are AWESOME, though."],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                        {"func":"moreDialogue","props":["dialogue/coolQuestions/again"]}
+                    ]
+                }
+            },
+            "again":{
+                "bg":"bg/forest.jpg",
+                "interaction":[
+                    {"text":["Do you want to answer these questions again?"],"asset":["shini.jpg","l.jpg"],"pos":"left"},
+                    {"func":"confirmation","props":[[{"next":"dialogue/coolQuestions","text":"Yes"},{"next":"dialogue/on_to_battle","text":"No"}]]}
+                ]
+            }
+        },
+        "battleBalance":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"func":"useSave","props":["sample_save_data"]},
+                {"func":"loadScene","props":["battle_balance","battle1","battle"]}
+            ]
+        },
+        "preBattle":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Nihihi, time to walk through the forest and go to the town!"],"asset":["skirm.png",false],"pos":"left"},
+                {"func":"loadBattleScene","props":["preBattleScene"]}
+            ]
+        },
+        "battle":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Loading battle."],"asset":["skirm.png",false],"pos":"left"},
+                {"func":"loadBattle","props":["battle"]}
+            ]
+        },
+        "nextAct":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Loading Act 1_2."],"asset":["skirm.png",false],"pos":"left"},
+                {"func":"loadScene","props":["act1_2","preBattleScene","battleScene"]}
+            ]
+        },
+        "thirdAct":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Loading Act 1_3."],"asset":["skirm.png",false],"pos":"left"},
+                {"func":"loadScene","props":["act1_3","preBattleScene","battleScene"]}
+            ]
+        },
+        "thirdActBattle":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Loading Act 1_3 Battle."],"asset":["skirm.png",false],"pos":"left"},
+                {"func":"loadScene","props":["act1_3","battle","battle"]}
+            ]
+        }
+    },
+    "preBattleScene":{
+        "interaction":[
+            {"func":"setView","props":[2]},
+            {"func":"moveAlong","props":[2,[[17,22],[14,22],[14,11]],"up",{"func":"allowCycle","obj":"text"}]},
+            {"text":["Doot da doo!"],"asset":["skirm.png"],"pos":"left","autoCycle":180},
+            {"text":["Doooooo!"],"asset":["skirm.png"],"pos":"left","autoCycle":90},
+            {"text":["Eyahooo!"],"asset":["skirm.png"],"pos":"left","noCycle":true},
+            {"func":"hideDialogueBox","props":[]},
+            {"func":"centerView","props":[0,1],"wait":true},
+            {"func":"changeMusic","props":["prebattle.mp3"],"wait":true},
+            {"func":"moveAlong","props":[1,[[17,14],{"func":"forceCycle","obj":"text"},[15,14],[15,13]],"up"]},
+            {"func":"moveAlong","props":[0,[[14,15],[14,13]],"up",{"func":"forceCycle","obj":"text"}]},
+            {"text":["Hehehehehehe"],"asset":["shini.jpg",false],"pos":"left","noCycle":true},
+            {"text":["Mehehehehehe"],"asset":[false,"l.jpg"],"pos":"right","noCycle":true},
+            {"func":"changeDir","props":[2,"down"]},
+            {"text":["Uwah!","You two surprised me!","I'm gonna beat you both up now!","UWU"],"asset":["skirm.png",false],"pos":"left"},
+            
+            {"func":"loadBattle","props":["battle"]}
+        ],
+        "music":"the_usual.mp3",
+        "map":"demo0.tmx",
+        "initialChars":[
+            {"loc":[24,15],"charClass":"archer","dir":"up","storyId":0},
+            {"loc":[24,14],"charClass":"barbarian","dir":"down","storyId":1},
+            {"loc":[17,29],"name":"Alex","dir":"left","storyId":2,"team":"ally"}
+        ]
+    },
+    "battle":{
+        "music":"battle.mp3",
+        "map":"demo0.tmx",
+        "victory":{"func":"loadBattleScene","scene":"victory"},
+        "defeat":{"func":"dialogue","scene":"defeat"},
+        "placementSquares":[[14,11,"down"]],
+        "enemies":[
+            {"loc":[14,13],"charClass":"archer","level":1,"equipmentRank":2,"dir":"up"},
+            {"loc":[15,13],"charClass":"barbarian","level":2,"equipmentRank":1,"dir":"up"}
+        ],
+        "interactables":[
+            {"loc":[11,14],"class":"Chest","contents":["potion",1]}
+        ]
+    },
+    "skip_to_town":{
+        "bg":"",
+        "interaction":[
+            {"func":"loadLocation","props":["homeland_forest","start"]}
+        ]
+    },
+    "victory":{
+        "music":"the_usual.mp3",
+        "map":"demo0.tmx",
+        "initialChars":[
+            {"loc":[14,17],"charClass":"archer","dir":"up","storyId":0,"team":"enemy","anim":"Hurt"},
+            {"loc":[15,17],"charClass":"barbarian","dir":"up","storyId":1,"team":"enemy","anim":"Hurt"},
+            {"loc":[14,15],"name":"Alex","dir":"down","storyId":2,"team":"ally"}
+        ],
+        "interaction":[
+            {"func":"setCharacterAs","props":["leader","highest","method","ally","awardFilter"]},
+            {"func":"setView","props":["leader"]},
+            {"func":"hideDialogueBox","props":[]},
+            {"func":"waitTime","props":[1400],"noCycle":true},
+            {"text":["Hmph, that'll teach you guys to mess with me!","See ya."],"asset":[false,"skirm.png"],"pos":"right"},
+            {"func":"hideDialogueBox","props":[]},
+            {"func":"moveAlong","props":[2,[[19,0]],"up",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            {"func":"fadeChar","props":[2,1,true],"noCycle":true},
+            {"func":"loadScene","props":["act1_2","preBattleScene","battleScene"]}
+        ]
+    },
+    "defeat":{
+        "music":"the_usual.mp3",
+        "interaction":[
+            {"text":["Looks like we LOST the GAME!"],"asset":["shini.jpg",false],"pos":"left"},
+            {"func":"moreDialogue","props":["defeat/testerinoDialogino"]}
+        ],
+        "testerinoDialogino":{
+            "bg":"bg/forest.jpg",
+            "interaction":[
+                {"text":["Since we lost the battle, we get to do this cool scene :)"],"asset":[false,"shini.jpg"],"pos":"right"},
+                {"func":"changeBg","props":["bg/city.jpg"]},
+                {"text":["Wow","Let's do the same battle again!"],"asset":["l.jpg","shini.jpg"],"pos":"left"},
+                {"func":"loadBattle","props":["battle"]}
+            ]
+        }
+    }
+}

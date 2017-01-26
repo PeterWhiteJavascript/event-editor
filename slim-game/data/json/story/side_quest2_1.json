@@ -1,0 +1,47 @@
+{
+    "bgs":["bg/forest.jpg"],
+    "chars":["story/l.jpg"],
+    "maps":["le_forest.tmx"],
+    "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3"],
+    "dialogue":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["This is side quest 2_1!"],"asset":["l.jpg",false],"pos":"left"},
+            {"func":"loadBattle","props":["battle"]}
+        ]
+        
+    },
+    "battle":{
+        "music":"battle.mp3",
+        "map":"le_forest.tmx",
+        "victory":{"func":"loadScene","scene":"victory"},
+        "defeat":{"func":"loadScene","scene":"defeat"},
+        "placementSquares":[[5,4,"right"],[4,5,"right"],[4,4],[5,5],[4,2],[4,3]],
+        "enemies":[
+            {"loc":[12,7],"charClass":"archer","level":1,"equipmentRank":1},
+            {"loc":[12,8],"charClass":"archer","level":1,"equipmentRank":1},
+            {"loc":[11,6],"charClass":"barbarian","level":1,"equipmentRank":1},
+            {"loc":[11,9],"charClass":"barbarian","level":1,"equipmentRank":1}
+        ],
+        "interactables":[
+            
+        ]
+    },
+    "victory":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["GG EZ","Back to town"],"asset":[false,"l.jpg"],"pos":"right"},
+            {"func":"loadLocation","props":["homeland_forest","start"]}
+        ]
+    },
+    "defeat":{
+        "music":"the_usual.mp3",
+        "bg":"bg/forest.jpg",
+        "interaction":[
+            {"text":["LOST the GAME!"],"asset":["l.jpg",false],"pos":"left"},
+            {"func":"doDefeat","props":["THIS FUNCTION IS NOT DONE YET"]}
+        ]
+    }
+}

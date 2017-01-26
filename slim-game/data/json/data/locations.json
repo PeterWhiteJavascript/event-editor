@@ -1,0 +1,91 @@
+{
+    "homeland_forest":{
+        "name":"homeland_forest",
+        "bgs":["bg/pub.jpg","bg/city.jpg"],
+        "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3"],
+        "start":{
+            "music":"homeland.mp3",
+            "bg":"bg/city.jpg",
+            "interaction":[
+                {"text":["You have arrived in town."],"asset":[false,false],"pos":"left","skipLast":1},
+                {"func":"confirmation","props":[[
+                    {"next":"shop","text":"General Store"},
+                    {"next":"blacksmith","text":"Blacksmith"},
+                    {"next":"inn","text":"Forest's Fire Inn"},
+                    {"next":"pub","text":"Ann Mc'Sidequest's Pub"}
+                ]]}
+            ]
+        },
+        "shop":{
+            "bg":"bg/pub.jpg",
+            "inventory":{
+                "potion":{"name":"Potion","cost":100}
+            },
+            "interaction":[
+                {"text":["Welcome to the shop!"],"asset":[false,false],"pos":"left","skipLast":1},
+                {"func":"confirmation","props":[[
+                    {"next":"shop/buy","text":"Buy consumer products"},
+                    {"next":"shop/sell","text":"Sell goat antlers"},
+                    {"next":"start","text":"Leave the inn"}
+                ]]}
+            ],
+            "buy":{
+                "interaction":[
+                {"text":["Buy something."],"asset":[false,false],"pos":"left","skipLast":1},
+                    {"func":"confirmation","props":[[
+                        {"next":"shop","text":"Nevermind"}
+                    ]]}
+                ]
+            },
+            "sell":{
+                "interaction":[
+                {"text":["Sell something."],"asset":[false,false],"pos":"left","skipLast":1},
+                    {"func":"confirmation","props":[[
+                        {"next":"shop","text":"Nevermind"}
+                    ]]}
+                ]
+            }
+        },
+        "blacksmith":{
+            "bg":"bg/pub.jpg",
+            "todo": [
+                "upgrade",
+                "repair"
+            ],
+            "interaction":[
+                {"text":["You've come to forge some weapons?"],"asset":[false,false],"pos":"left","skipLast":1},
+                {"func":"confirmation","props":[[
+                    {"next":"start","text":"Leave the blacksmith"}
+                ]]}
+            ]
+        },
+        "inn":{
+            "bg":"bg/city.jpg",
+            "interaction":[
+                {"text":["The inn is warm and inviting."],"asset":[false,false],"pos":"left","skipLast":1},
+                {"func":"confirmation","props":[[
+                    {"next":"inn/sleep","text":"Sleep (0.500 btc)"},
+                    {"next":"start","text":"Leave the inn"}
+                ]]}
+            ],
+            "sleep":{
+                "bg":"bg/pub.jpg",
+                "interaction":[
+                    {"text":["There are no beds yet. What a lame inn."],"asset":[false,false],"pos":"left"},
+                    {"func":"moreDialogue","props":["start"]}
+                ]
+            }
+        },
+        "pub":{
+            "bg":"bg/pub.jpg",
+            "interaction":[
+                {"func":"triggerQuest", "props":["side_quest2_1"]},
+                {"text":["The pub is empty (of quests & guests)."],"asset":[false,false],"pos":"left","skipLast":1},
+                {"func":"confirmation","props":[[
+                    {"next":"start","text":"Leave the pub"}
+                ]]}
+            ]
+        }
+        
+    }
+}

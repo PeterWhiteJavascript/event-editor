@@ -1,0 +1,69 @@
+{
+    "bgs":["bg/forest.jpg","bg/city.jpg"],
+    "chars":["story/l.jpg","story/shini.jpg","story/pyro.png","story/skirm.png"],
+    "maps":["demo1.tmx"],
+    "music":["bgm/the_usual.mp3","bgm/homeland.mp3","bgm/battle.mp3"],
+    "startScene":["preBattleScene","battleScene"],
+    "preBattleScene":{
+        "interaction":[
+            {"func":"setView","props":[0,true]},
+            {"func":"moveAlong","props":[0,[[12,10],[16,10]],"right",{"func":"forceCycle","obj":"text"}]},
+            {"func":"hideDialogueBox","props":[],"noCycle":true},
+            {"text":["(Hmm, there seems to be a lot of people waiting to get into the city)"],"asset":["skirm.png"],"pos":"left"},
+            {"func":"playAnim","props":[0,"Counter","right","slashing","forceCycle"],"noCycle":true},
+            {"text":["Hey, you there!","What's the hold up?"],"asset":["skirm.png"],"pos":"left"},
+            {"func":"changeDir","props":[2,"left"]},
+            {"text":["Ah, hello there, young lady.","You'll just have to wait your turn.","There are guards taking a toll to enter the town."],"asset":[false,"pyro.png"],"pos":"right"},
+            {"text":["Hmph, yeah right.", "I know a shortcut into the city.","Want to come?"],"asset":["skirm.png"],"pos":"left"},
+            {"text":["Sure, let's go."],"asset":[false,"pyro.png"],"pos":"right"},
+            
+            {"func":"moveAlong","props":[0,[[14,7]],"down"]},
+            {"func":"moveAlong","props":[2,[[14,8]],"up",{"func":"forceCycle","obj":"text"}]},
+            {"func":"hideDialogueBox","props":[],"noCycle":true},
+            
+            {"text":["There is a secret hole in the wall through this forest."],"asset":["skirm.png"],"pos":"left"},
+            {"text":["Hmm, I see."],"asset":[false,"pyro.png"],"pos":"right"},
+            
+            {"func":"moveAlong","props":[0,[[22,2]],"right",{"func":"forceCycle","obj":"text"}]},
+            {"func":"moveAlong","props":[2,[[22,2]],"right"]},
+            {"func":"hideDialogueBox","props":[],"noCycle":true},
+            
+            {"func":"fadeChar","props":[0,0.25]},
+            {"func":"fadeChar","props":[2,0.25,true]},
+            {"func":"hideDialogueBox","props":[],"noCycle":true},
+            
+            {"func":"centerView","props":[1,1],"wait":true},
+            {"func":"allowCycle","obj":"text"},
+            
+            {"func":"playAnim","props":[1,"Counter","right","slashing","forceCycle"],"noCycle":true},
+            {"text":["I hope we can get in soon.", "I've been waiting all day."],"asset":["l.jpg"],"pos":"right"},
+            {"func":"hideDialogueBox","props":[]},
+            
+            {"func":"moveAlong","props":[7,[[22,8]],"down",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            {"func":"moveAlong","props":[5,[[22,9]],"right",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            {"func":"fadeChar","props":[5,0.5,true]},
+            {"func":"moveAlong","props":[3,[[20,9]],"right",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            {"func":"moveAlong","props":[6,[[21,10]],"right",{"func":"forceCycle","obj":"text"}],"noCycle":true},
+            {"func":"moveAlong","props":[7,[[22,9]],"left"]},
+            {"func":"waitTime","props":[1500],"noCycle":true},
+            
+            {"func":"loadScene","props":["act1_3","preBattleScene","battleScene"]}
+        ],
+        "music":"the_usual.mp3",
+        "map":"demo1.tmx",
+        "initialChars":[
+            {"loc":[12,22],"name":"Alex","dir":"left","storyId":0,"team":"ally"},
+            {"loc":[18,9],"charClass":"barbarian","storyId":1,"dir":"right"},
+            {"loc":[17,10],"name":"Astraea","charClass":"archer","storyId":2,"dir":"right","team":"ally"},
+            {"loc":[19,9],"charClass":"archer","storyId":3,"dir":"right"},
+            {"loc":[19,10],"charClass":"barbarian","storyId":4,"dir":"right"},
+            {"loc":[21,9],"charClass":"barbarian","storyId":5,"dir":"right"},
+            {"loc":[20,10],"charClass":"archer","storyId":6,"dir":"right"},
+            
+            
+            {"loc":[22,9],"charClass":"knight","storyId":7,"dir":"left"},
+            {"loc":[22,10],"charClass":"knight","storyId":8,"dir":"left"}
+            
+        ]
+    }
+}

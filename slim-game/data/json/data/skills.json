@@ -1,0 +1,263 @@
+{
+    "dagger":{
+        "poke":{
+            "name":"Poke",
+            "cost":4,
+            "damageLow":5,
+            "damageHigh":10,
+            "range":["normal",1],
+            "desc":"A basic dagger skill.",
+            "rank":1
+        },
+        "throw":{
+            "name":"Throw",
+            "cost":8,
+            "damageLow":3,
+            "damageHigh":10,
+            "range":["normal",3],
+            "desc":"A basic throwing skill.",
+            "rank":2
+        }
+    },
+    "sword":{
+        "stab":{
+            "name":"Stab",
+            "cost":4,
+            "damageLow":6,
+            "damageHigh":9,
+            "range":["normal",1],
+            "desc":"A basic stabbing skill. A basic stabbing skill. A basic stabbing skill. A basic stabbing skill. A basic stabbing skill. A basic stabbing skill. A basic stabbing skill. A basic stabbing skill.",
+            "rank":1
+        },
+        "slash":{
+            "name":"Slash",
+            "cost":6,
+            "damageLow":8,
+            "damageHigh":10,
+            "range":["normal",1],
+            "desc":"A basic slashing skill as adas.A basic slashing skill as adas.A basic slashing skill as adas.A basic slashing skill as adas.A basic slashing skill as adas.A basic slashing skill as adas.",
+            "rank":2
+        },
+        "whirlwind":{
+            "name":"Whirlwind",
+            "cost":12,
+            "damageLow":5,
+            "damageHigh":10,
+            "range":["self",0],
+            "aoe":["normal",1,"excludeCenter"],
+            "anim":"Whirlwind",
+            "sound":"whirlwind",
+            "desc":"A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A ",
+            "rank":3
+        },
+        "superwhirlwind":{
+            "name":"Super Whirlwind",
+            "cost":22,
+            "damageLow":20,
+            "damageHigh":20,
+            "range":["self",0],
+            "aoe":["normal",2],
+            "anim":"Whirlwind",
+            "sound":"whirlwind",
+            "desc":"A basic superwhirlwinding skill.",
+            "rank":4
+        }
+    },
+    "axe":{
+        "strike":{
+            "name":"Strike",
+            "cost":10,
+            "damageLow":10,
+            "damageHigh":15,
+            "range":["normal",1],
+            "desc":"A basic striking skill.",
+            "rank":1
+        }
+    },
+    
+    "spear":{
+        "puncture":{
+            "name":"Puncture",
+            "cost":4,
+            "damageLow":5,
+            "damageHigh":10,
+            "range":["normal",2],
+            "desc":"A basic puncturing skill.",
+            "rank":1
+        },
+        "pierce":{
+            "name":"Pierce",
+            "cost":6,
+            "range":["straight",2],
+            "aoe":["straight",2],
+            "damageLow":3,
+            "damageHigh":8,
+            "diminishFarDamage":0.1,
+            "dfAnimTime":100,
+            "anim":"Piercing",
+            "desc":"A basic piercing skill. This attack hits all units in its path.",
+            "rank":2
+        },
+        "push":{
+            "name":"Push",
+            "cost":10,
+            "damageLow":2,
+            "damageHigh":4,
+            "range":["normal",1],
+            "effect":{
+                "func":"push",
+                "props":[1],
+                "accuracy":100
+            },
+            "desc":"A basic pushing skill. This attack pushes the target one space.",
+            "rank":2
+        }
+    },
+    "bow":{
+        "shoot":{
+            "name":"Shoot",
+            "cost":4,
+            "damageLow":3,
+            "damageHigh":6,
+            "range":["normal",5],
+            "desc":"A basic shooting skill.",
+            "rank":1
+        },
+        "blind":{
+            "name":"Blind",
+            "cost":8,
+            "range":["normal",3],
+            "effect":{
+                "func":"changeStatus",
+                "props":["blind",[1,3]],
+                "accuracy":75
+            },
+            "desc":"A basic blinding skill.",
+            "rank":2
+        },
+        "poison":{
+            "name":"Poison",
+            "cost":8,
+            "range":["normal",3],
+            "effect":{
+                "func":"changeStatus",
+                "props":["poisoned",[1,3]],
+                "accuracy":100
+            },
+            "desc":"A basic poisoning skill.",
+            "rank":2
+        },
+        "holdback":{
+            "name":"Hold Back",
+            "cost":2,
+            "range":["normal",6],
+            "damageLow":2,
+            "damageHigh":2,
+            "holdBack":true,
+            "desc":"Hold back to keep the target at at least 1 hp.",
+            "rank":3
+        },
+        
+        "crosshair":{
+            "name":"Crosshair",
+            "cost":15,
+            "damageLow":5,
+            "damageHigh":10,
+            "range":["normal",6],
+            "aoe":["normal",1],
+            "desc":"A basic crosshair skill.",
+            "rank":4
+        },
+        "sonicboom":{
+            "name":"Sonic Boom!",
+            "cost":20,
+            "damageLow":999,
+            "damageHigh":999,
+            "range":["normal",6],
+            "aoe":["corners",1],
+            "anim":"SonicBoom",
+            "sound":"explosion",
+            "desc":"A basic sonicbooming skill.",
+            "rank":5
+        }
+    },
+    "shield":{
+        "defend":{
+            "name":"Defend",
+            "cost":3,
+            "range":["self",0],
+            "effect":{
+                "func":"changeStatus",
+                "props":["sturdy",1],
+                "accuracy":100
+            },
+            "desc":"A basic defending skill.",
+            "rank":1
+        },
+        "firstAid":{
+            "name":"First Aid",
+            "cost":1,
+            "range":["normal",1],
+            "effect":{
+                "func":"healHp",
+                "props":[20],
+                "accuracy":100
+            },
+            "desc":"Heals 20 hp to a target.",
+            "rank":1
+        },
+        "protect":{
+            "name":"Protect",
+            "cost":8,
+            "range":["self",0],
+            "aoe":["normal",1,"excludeCenter"],
+            "affects":"ally",
+            "effect":{
+                "func":"changeStatus",
+                "props":["sturdy",1],
+                "accuracy":100
+            },
+            "desc":"A basic protecting skill.",
+            "rank":2
+        },
+        "secondAid":{
+            "name":"Second Aid",
+            "cost":1,
+            "range":["normal",1],
+            "effect":{
+                "func":"healHp",
+                "props":[40],
+                "accuracy":100
+            },
+            "desc":"Heals 40 hp to a target.",
+            "rank":2
+        },
+        "totaldefense":{
+            "name":"Total Defense",
+            "cost":13,
+            "range":["self",0],
+            "aoe":["normal",1],
+            "affects":"ally",
+            "effect":{
+                "func":"changeStatus",
+                "props":["sturdy",1],
+                "accuracy":100
+            },
+            "desc":"A basic totaldefensing skill.",
+            "rank":3
+        },
+        "thirdAid":{
+            "name":"Third Aid",
+            "cost":1,
+            "range":["normal",1],
+            "effect":{
+                "func":"healHp",
+                "props":[75],
+                "accuracy":100
+            },
+            "desc":"Heals 75 hp to a target.",
+            "rank":3
+        }
+    }
+    
+}
