@@ -3,7 +3,7 @@ $name = "New Event";
 $scene = $_POST["scene"];
 $event = [];
 $desc = "";
-$kind = "dialogue";
+$kind = "story";
 //Check if name is set, otherwise it's a new event
 if(isset($_POST['name'])){
     $name = $_POST["name"];
@@ -29,9 +29,10 @@ if(isset($_POST['name'])){
                         Event Name<br>
                         <input type="text" name="name" value="<?php echo $name; ?>"><br>
                         Description<br>
-                        <textarea type="text" name="desc" value="<?php echo $desc; ?>"></textarea><br>
+                        <textarea type="text" name="desc"><?php echo $desc; ?></textarea><br>
                         Event Type<br>
                         <select name="event-type">
+                            <option <?php if($kind=="story"){echo "selected";}?> value="story">Story</option>
                             <option <?php if($kind=="dialogue"){echo "selected";}?> value="dialogue">Dialogue</option>
                             <option <?php if($kind=="battleScene"){echo "selected";}?> value="battleScene">Battle Scene</option>
                             <option <?php if($kind=="battle"){echo "selected";}?> value="battle">Battle</option>

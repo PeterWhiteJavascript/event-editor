@@ -78,6 +78,9 @@ body {
 #title {
     padding: 2%;
 }
+#editor-title{
+    
+}
 h1 {
     font-family:"Palatino Linotype";
     font-size: 58px;
@@ -91,10 +94,23 @@ h1 {
     border-image: initial;
     border-radius: 5px;
 }
+h2{
+    font-family:"Palatino Linotype";
+    font-size: 38px;
+    text-align: center;
+    background-color: #ddd;
+    color: black;
+    border-width: initial;
+    border-style: solid;
+    border-color: black;
+    height:100%;
+}
 #content{
     margin-left:2%;
 }
-
+#editor-content{
+    
+}
 .menu {
     font-size: 34px;
     background-color: #f5f5f5;
@@ -108,18 +124,52 @@ h1 {
     border-radius: 5px;
     padding: 10px;
 }
-.small-menu{
+#editor-page-options{
+    float:left;
+    width:200px;
+    height:100%;
+    border-width: initial;
+    border-style: solid;
+    border-color: black;
+    padding:10px;
+    width:600px;
+}
+#music-select{
+    float:left;
+}
+#bg-select{
+    margin-left:10px;
+    float:right;
+}
+#text-select{
+    margin-top:30px;
+}
+#text-select textarea{
+    resize:vertical;
+    height:300px;
+}
+.editor-left-menu{
+    float:left;
+    width:200px;
+    height:100%;
+}
+.editor-left-menu ul{
     font-size: 22px;
     background-color: #fbfbfb;
-    width: 10%;
-    height: 25%;
+    width:100%;
+    height: 100%;
     text-align: center;
     border-width: initial;
     border-style: solid;
     border-color: black;
-    border-image: initial;
-    border-radius: 5px;
     padding: 10px;
+}
+#editor-interaction-menu{
+    margin-left:200px;
+    border-width: initial;
+    border-style: solid;
+    border-color: black;
+    border-image: initial;
 }
 .menu li {
     display: block;
@@ -127,7 +177,7 @@ h1 {
     margin: auto;
 }
 .btn {
-	font-size: initial;
+    font-size: initial;
 }
 .menu-button{
     width: 100%;
@@ -198,4 +248,7 @@ h1 {
     display:inline-block;
     width:10%;
     height:100%;
+}
+audio{
+    width:100px;
 }
