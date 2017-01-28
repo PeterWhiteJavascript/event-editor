@@ -21,6 +21,8 @@ if (in_array($name.'.json', $scanned_directory)) {
 
     //write json to file
     if (file_put_contents('data/scenes/'.$name.'.json', $json)){
+        //Create a new directory in the events folder
+        mkdir("data/events/".$name);
         header("Location: load.php");
     } else {
         echo "Oops! Error creating json file...";

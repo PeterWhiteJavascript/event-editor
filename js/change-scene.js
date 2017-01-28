@@ -16,7 +16,7 @@ $(function(){
     //Default to top item being selected
     $(".scene-button").first().trigger("click");
     
-    $('#footer').click( function(e) {
+    $('#footer a').click( function(e) {
         var form = $('<form action="show-events.php" method="post"></form>');
         form.append('<input type="text" name="scene" value="'+$("#subtitle").text()+'">');
         form.submit();

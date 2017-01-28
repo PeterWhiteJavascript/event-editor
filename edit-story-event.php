@@ -26,17 +26,20 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
                 <ul>
                     <li><a id="add-new-page"><div class="menu-button btn btn-default">Add New Page</div></a></li>
                     <li><a id="remove-page"><div class="menu-button btn btn-default">Remove Page</div></a></li>
+                    <li><a id="copy-page"><div class="menu-button btn btn-default">Copy Page</div></a></li>
                     <li><a id="save-event"><div class="menu-button btn btn-default">Save Event</div></a></li>
+                    <li><a id="back"><div class="menu-button btn btn-default">Go Back</div></a></li>
                 </ul>
             </div>
             <div class="editor-left-menu" id="pages">
                 <ul>
                 <?php
-                for($i=0;$i<count($pages);$i++){
-                    $mus = $pages[$i]['music'];
-                    $bg = $pages[$i]['bg'];
-                    $te = $pages[$i]['text'];
-                    echo '<li music="'.$mus.'" bg="'.$bg.'" text="'.$te.'"><a class="scene-button"><div class="menu-button btn btn-default">Page '.($i+1).'</div></a></li>';
+                foreach ($pages as $key => $value) {
+                    $mus = $value['music'];
+                    $bg = $value['bg'];
+                    $te = $value['text'];
+                    $name = $value['name'];
+                    echo '<li id="'.$key.'" music="'.$mus.'" bg="'.$bg.'" text="'.$te.'"><a class="scene-button"><div class="menu-button btn btn-default">'.$name.'</div></a></li>';
                 }
                 ?>
                 </ul>
@@ -54,6 +57,7 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
                 <audio controls>
                     <source type="audio/mp3" src="">Sorry, your browser does not support HTML5 audio.
                 </audio>
+                <img id="bg-preview">
                 <div id="bg-select">BG: 
                     <select>
                         <?php 
@@ -63,7 +67,26 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
                         ?>
                     </select>
                 </div>
+                <br>
                 <div id="text-select">Text: 
+                </div>
+                <div id="page-options">
+                    <a id="add-new-choice"><div class="btn btn-default">Add Choice</div></a>
+                </div>
+                <div id="choices">Choices:
+                    <ul>
+                        <?php
+                        forEach($pages as $key => $value){
+                            forEach($value['choices'] as $key2 => $value2){
+                                $display = $value2['displayText'];
+                                $desc = $value2['desc'];
+                                $page = $value2['page'];
+                                $effect = $value2['effect'];
+                                echo '<li class="choice-'.$key.'"><a class="remove-choice"><div class="btn btn-default">x</div></a><div>Display Text: <input class="display-text" value="'.$display.'"></input></div><div>Desc: <textarea class="desc-text">'.$desc.'</textarea></div><div>To Page: <select class="pages-to"></select></div><div>Effect: <select class="on-page-effect"></select></div></li>';
+                            }
+                        }
+                        ?>
+                    </ul>
                 </div>
             </div>
         </div>

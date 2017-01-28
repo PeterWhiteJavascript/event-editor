@@ -50,6 +50,15 @@ table {
 
 /* Start my style */
 
+input{
+    width:100%;
+}
+textarea{
+    width:100%;
+    resize:vertical;
+}
+
+
 a:visited {
     color: black;
 }
@@ -141,11 +150,16 @@ h2{
     margin-left:10px;
     float:right;
 }
+#bg-preview{
+    width:120px;
+    height:auto;
+    max-height:75px;
+    position:absolute;
+}
 #text-select{
     margin-top:30px;
 }
 #text-select textarea{
-    resize:vertical;
     height:300px;
 }
 .editor-left-menu{
@@ -251,4 +265,18 @@ h2{
 }
 audio{
     width:100px;
+}
+
+.remove-choice{
+    float:right;
+}
+
+#choices ul li{
+    background-color: #fbfbfb;
+    border-width: initial;
+    border-style: solid;
+    border-color: black;
+}
+#choices ul li input{
+    width:50%;
 }

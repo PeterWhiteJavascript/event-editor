@@ -12,7 +12,7 @@ if(!isset($_POST['origName'])){
     ];
     switch($eventType){
         case "story":
-            $newFile['pages'] = [];
+            $newFile['pages'] = (object)[];
             break;
         case "dialogue":
             $newFile['interactions'] = (object)[];
@@ -32,7 +32,14 @@ if(!isset($_POST['origName'])){
     $newFile['kind'] = $eventType;
 }
 file_put_contents("data/events/".$scene."/".$name.".json", json_encode($newFile));
+//Add the event to the event order of the scene
 
+$sceneData = json_decode(file_get_contents("data/scenes/".$scene.".json"), true);
+if(!in_array($name, $sceneData['eventOrder'])){
+    $sceneData['eventOrder'][] = $name;
+    json_encode($sceneData['eventOrder']);
+    file_put_contents("data/scenes/".$scene.".json", json_encode($sceneData));
+}
 ?>
 
 <!DOCTYPE html>
