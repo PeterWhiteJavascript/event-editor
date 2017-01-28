@@ -1,7 +1,8 @@
 <?php
-$event = $_POST["event"];
-$from = $_POST["from"];
-$scene = $_POST["scene"];
+include("php-config.php");
+$event = addDashes($_POST["event"]);
+$from = addDashes($_POST["from"]);
+$scene = addDashes($_POST["scene"]);
 //Make a copy of the event in the new folder
 $eventFile = file_put_contents('data/events/'.$scene.'/'.$event.'.json', file_get_contents("data/events/".$from."/".$event.'.json'), true);
 //Delete the file from the original location

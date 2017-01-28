@@ -1,6 +1,7 @@
 <?php
-$scene = $_POST["scene"];
-$event = $_POST["event"];
+include("php-config.php");
+$scene = addDashes($_POST["scene"]);
+$event = addDashes($_POST["event"]);
 $directory = 'data/scenes';
 $scanned_directory = array_diff(scandir($directory), array('..', '.'));
 ?>

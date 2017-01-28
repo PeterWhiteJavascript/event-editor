@@ -1,6 +1,7 @@
 <?php
-$original_name = $_POST['origName'];
-$name = $_POST["name"];
+include("php-config.php");
+$original_name = addDashes($_POST['origName']);
+$name = addDashes($_POST["name"]);
 $desc = $_POST["desc"];
 $directory = 'data/scenes';
 $scanned_directory = array_diff(scandir($directory), array('..', '.'));

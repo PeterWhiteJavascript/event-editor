@@ -1,59 +1,77 @@
-//Store the page that has been clicked on
-var selectedPage;
-
 $(function(){
+    $( "#sortable" ).sortable({
+        axis: "y"
+    });
+    $( "#sortable" ).disableSelection();
+    //Store the page that has been clicked on
+    var selectedPage;
+
+    //Increment every time a new page is added (so we don't have duplicate page names if a page was deleted)
+    var uniquePages = $("#pages ul li").length;
+    
+    function renamePageOption(from,to){
+        $(".pages-to option").each(function(){
+            if($(this).text()===from){
+                $(this).text(to);
+            }
+        });
+    }
+    function appendNewPageOption(){
+        $(".pages-to").each(function(){
+            var text = $("#pages ul li:nth-child("+($("#pages ul li").length)+") a div").html();
+            $(this).append('<option value="'+text+'">'+text+'</option>');
+        });
+    }
     function appendPagesOptions(to){
         for(var i=1;i<$("#pages ul li").length+1;i++){
             var text = $("#pages ul li:nth-child("+i+") a div").html();
-            to.append('<option value="'+text+'">'+text+'</option>');
+            if($(to).attr("initialValue")===text){
+                to.append('<option value="'+text+'" selected>'+text+'</option>');
+            } else {
+                to.append('<option value="'+text+'">'+text+'</option>');
+            }
+            
         }
     }
-    var effects = [
-        {name:"None",value:{func:"none",props:[]}},
-        {name:"+1 Morale",value:{func:"improveParty",props:["morale",1]}},
-        {name:"Enemy Setup #2",value:{func:"updateNextBattle",props:["enemySetUp",2]}},
-        {name:"+100 Gold",value:{func:"getGold",props:[100]}}
+    //The effect functions that happen when going to a certain page.
+    var funcs = [
+        "None",
+        "Change Morale",
+        "Change Gold",
+        "Change Exp",
+        "Change Enemy Setup",
+        "Remove Choice From Page"
+    ];
+    //Includes the properties for each effect func
+    var props = [
+        [],
+        [{name:"Amount",value:0},{name:"Affects",value:["Whole Party","Avaiable Only"]}],
+        [{name:"Amount",value:0}],
+        [{name:"Amount",value:0},{name:"Affects",value:["Whole Party","Avaiable Only"]}],
+        [{name:"Change To",value:[1,2,3,4]}],
+        [{name:"Display Text of Choice",value:""},{name:"Page of Choice",value:""}]
+        
     ];
     function appendOnPageEffects(to){
-        for(var i=0;i<effects.length;i++){
-            to.append('<option value="">'+effects[i].name+'</option>');
+        for(var i=0;i<funcs.length;i++){
+            to.append('<option class="page-effect" value="'+funcs[i]+'">'+funcs[i]+'</option>');
         }
     }
-    //START CHOICE BUTTONS
-    $('#add-new-choice').click( function(e) {
-        $("#choices ul").append('<li class="choice-'+$(selectedPage).parent().attr("id")+'"><a class="remove-choice"><div class="btn btn-default">x</div></a><div>Display Text: <input class="display-text" placeholder="Choice"></input></div><div>Desc: <textarea class="desc-text"></textarea></div><div>To Page: <select class="pages-to"></select></div><div>Effect: <select class="on-page-effect"></select></div></li>');
-        //Loop through the pages and put them in the select
-        appendPagesOptions($(".pages-to").last());
-        appendOnPageEffects($(".on-page-effect").last());
-    });
-    
-    //END CHOICE BUTTONS
-    
-    //START MAIN OPTIONS BUTTONS
-    //Create a new page
-    $('#add-new-page').click( function(e) {
-        $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+$("#pages ul li:last-child").attr("music")+'" bg="'+$("#pages ul li:last-child").attr("bg")+'" text=""><a class="scene-button"><div class="menu-button btn btn-default">Page '+($("#pages ul li").length+1)+'</div></a></li>');
-    });
-    $('#remove-page').click( function(e) {
-        $(selectedPage).parent().remove();
-        $(".scene-button").first().trigger("click");
-    });
-    //Copies the page, but give a new unique id
-    $('#copy-page').click( function(e) {
-        $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+$(selectedPage).parent().attr("music")+'" bg="'+$(selectedPage).parent().attr("bg")+'" text="'+$(selectedPage).parent().attr("text")+'"><a class="scene-button"><div class="menu-button btn btn-default">Page '+($("#pages ul li").length+1)+'</div></a></li>');
-        $(".scene-button").first().trigger("click");
-    });
-    
-    $('#back').click( function(e) {
-        var sure = confirm("Are you sure you want to go back without saving?")
-        if(sure){
-            var form = $('<form action="create-event.php" method="post"></form>');
-            form.append('<input type="text" name="scene" value="'+$("#scene-name").text()+'">');
-            form.append('<input type="text" name="name" value="'+$("#editor-title").text()+'">');
-            form.submit();
+    $(".on-page-effect").on("change",function() {
+        var val = $(this).val();
+        var num = 0;
+        for(var i=0;i<funcs.length;i++){
+            if(funcs[i]===val){
+                num = i;
+                break;
+            }
         }
+        var p = props[num];
+        console.log(p)
+        //TO DO: do something with the props. Display each prop and allow the user to modify the value
+
     });
-    $('#save-event').click( function(e) {
+    function createSaveForm(){
         $(selectedPage).parent().attr("text",$("#text-select textarea").val()); 
         var form = $('<form action="save-story-pages.php" method="post"></form>');
         form.append('<input type="text" name="name" value="'+$("#editor-title").text()+'">');
@@ -85,6 +103,58 @@ $(function(){
         var json = JSON.stringify(choices);
         //Send the choices as a JSON string
         form.append("<input type='text' name='choices' value='"+json+"'>");
+        return form;
+    }
+     
+    //START CHOICE BUTTONS
+    $('#add-new-choice').click( function(e) {
+        $("#choices ul").append('<li class="choice-'+$(selectedPage).parent().attr("id")+' choice-li"><a class="remove-choice"><div class="btn btn-default">x</div></a><div>Display Text: <input class="display-text" placeholder="Choice"></input></div><div>Desc: <textarea class="desc-text"></textarea></div><div>To Page: <select class="pages-to"></select></div><div>Effect: <select class="on-page-effect"></select></div></li>');
+        //Loop through the pages and put them in the select
+        appendPagesOptions($(".pages-to").last());
+        appendOnPageEffects($(".on-page-effect").last());
+    });
+    
+    //END CHOICE BUTTONS
+    
+    //START MAIN OPTIONS BUTTONS
+    //Create a new page
+    $('#add-new-page').click( function(e) {
+        uniquePages++;
+        var music = $("#pages ul li:last-child").attr("music")?$("#pages ul li:last-child").attr("music"):$("#music-select option").first().val();
+        var bg = $("#pages ul li:last-child").attr("bg")?$("#pages ul li:last-child").attr("bg"):$("#bg-select option").first().val();
+        $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+music+'" bg="'+bg+'" text=""><a class="scene-button"><div class="menu-button btn btn-default">Page '+uniquePages+'</div></a></li>');
+        appendNewPageOption();
+    });
+    $('#remove-page').click( function(e) {
+        if($('#pages ul li').length>1){
+            $(selectedPage).parent().remove();
+            $(".scene-button").first().trigger("click");
+        }
+    });
+    //Copies the page, but give a new unique id
+    $('#copy-page').click( function(e) {
+        uniquePages++;
+        $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+$(selectedPage).parent().attr("music")+'" bg="'+$(selectedPage).parent().attr("bg")+'" text="'+$(selectedPage).parent().attr("text")+'"><a class="scene-button"><div class="menu-button btn btn-default">Page '+uniquePages+'</div></a></li>');
+        appendNewPageOption();
+    });
+    //Test the event in the same conditions as in game!
+    $('#test-event').click( function(e) {
+        var form = createSaveForm();
+        form.append('<input type="text" name="testing" value="true">')
+        form.submit();
+    });
+    
+    $('#back').click( function(e) {
+        var sure = confirm("Are you sure you want to go back without saving?")
+        if(sure){
+            var form = $('<form action="create-event.php" method="post"></form>');
+            form.append('<input type="text" name="scene" value="'+$("#scene-name").text()+'">');
+            form.append('<input type="text" name="name" value="'+$("#editor-title").text()+'">');
+            form.submit();
+        }
+    });
+    $('#save-event').click( function(e) {
+        var form = createSaveForm();
         form.submit();
     });
     //END MAIN OPTIONS BUTTONS
@@ -97,10 +167,15 @@ $(function(){
         $("#bg-preview").attr("src","slim-game/images/"+$(this).val());
     });
     function finishEditPageName(){
+        console.log("hi")
         var name = $(selectedPage).find(':first-child').val();
-        if(!name.length) name = $(selectedPage).find(':first-child').attr("origValue");
+        var orig = $(selectedPage).find(':first-child').attr("origValue");
+        if(!name.length){
+            name = orig;
+        }
         $(selectedPage).find(':first-child').remove();
-        $(selectedPage).append('<div class="menu-button btn btn-default">'+name+'</div>');
+        $(selectedPage).append('<div class="menu-button btn btn-default active">'+name+'</div>');
+        renamePageOption(orig,name);
     }
     //When an individual page is clicked
     $(document).on("click",".scene-button",function(e){
@@ -116,7 +191,6 @@ $(function(){
                 $(selectedPage).find(':first-child').change(finishEditPageName);
             }
         } else {
-            
             //Hide the choices from the last page
             $(".choice-"+$(selectedPage).parent().attr("id")).hide();
             //Show the choices for the current page
@@ -142,8 +216,6 @@ $(function(){
         $(this).parent().remove();
     });
     
-    //Default to top item being selected
-    $(".scene-button").first().trigger("click");
     $("audio").first().attr("src","slim-game/audio/bgm/"+$("#music-select select").val());
     $("#bg-preview").attr("src","slim-game/images/"+$("#bg-select select").val());
     //Fill the pages-to selects
@@ -153,6 +225,15 @@ $(function(){
     $(".on-page-effect").each(function(){
         appendOnPageEffects($(this));
     });
+    //Hide all choices
+    $(".choice-li").hide();
+    //If there are no pages, create one
+    if($("#pages ul li").length===0){
+        $('#add-new-page').trigger("click");
+    }
+    
+    //Default to top item being selected
+    $(".scene-button").first().trigger("click");
     
     
 });

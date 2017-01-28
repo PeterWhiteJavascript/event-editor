@@ -1,5 +1,6 @@
 <?php
-$scene = $_POST['scene'];
+include("php-config.php");
+$scene = addDashes($_POST['scene']);
 //Save the order of events in a scene
 $order = $_POST['order'];
 

@@ -7,10 +7,12 @@ var selectedEvent;
 $(function(){
     //START OPTS BUTTONS
     $('#edit-event').click( function(e) {
-        var scene = $("#title").text();
-        var name = $(selectedEvent).parent().attr("name");
-        var form = $('<form action="create-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
-        form.submit();
+        if(selectedEvent){
+            var scene = $("#title").text();
+            var name = $(selectedEvent).parent().attr("name");
+            var form = $('<form action="create-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
+            form.submit();
+        }
     });
     $('#new-event').click( function(e) {
         var scene = $("#title").text();
@@ -19,32 +21,40 @@ $(function(){
     });
     
     $('#copy-event').click( function(e) {
-        var name = $(selectedEvent).parent().attr("name");
-        var scene = $("#title").text();
-        var form = $('<form action="copy-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
-        form.submit();
+        if(selectedEvent){
+            var name = $(selectedEvent).parent().attr("name");
+            var scene = $("#title").text();
+            var form = $('<form action="copy-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
+            form.submit();
+        }
     });
     
     //Change the order of the scenes
     $('#order-events').click( function(e) {
-        var scene = $("#title").text();
-        var form = $('<form action="order-events.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
-        form.submit();
+        if(selectedEvent){
+            var scene = $("#title").text();
+            var form = $('<form action="order-events.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
+            form.submit();
+        }
     });
     //Change the scene in which this event occurs
     $('#change-scene').click( function(e) {
-        var event = $(selectedEvent).parent().attr("name");
-        var scene = $("#title").text();
-        var form = $('<form action="change-scene.php" method="post"><input type="text" name="event" value="'+event+'"><input type="text" name="scene" value="'+scene+'"></form>');
-        form.submit();
+        if(selectedEvent){
+            var event = $(selectedEvent).parent().attr("name");
+            var scene = $("#title").text();
+            var form = $('<form action="change-scene.php" method="post"><input type="text" name="event" value="'+event+'"><input type="text" name="scene" value="'+scene+'"></form>');
+            form.submit();
+        }
     });
     $('#delete-event').click( function(e) {
-        var yes = confirm("Really delete event?");
-        if(yes){
-            var name = $(selectedEvent).parent().attr("name");
-            var scene = $("#title").text();
-            var form = $('<form action="delete-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
-            form.submit();
+        if(selectedEvent){
+            var yes = confirm("Really delete event?");
+            if(yes){
+                var name = $(selectedEvent).parent().attr("name");
+                var scene = $("#title").text();
+                var form = $('<form action="delete-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
+                form.submit();
+            }
         }
     });
     //END OPTS BUTTONS

@@ -1,5 +1,6 @@
 <?php
-$scene = $_POST['scene'];
+include("php-config.php");
+$scene = addDashes($_POST['scene']);
 
 $directory = "data/events/".$scene;
 //Get the events

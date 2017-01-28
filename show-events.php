@@ -1,5 +1,6 @@
 <?php
-$scene = $_POST["scene"];
+include("php-config.php");
+$scene = addDashes($_POST["scene"]);
 //Get the event order
 $order = json_decode(file_get_contents('data/scenes/'.$scene.'.json'), true)['eventOrder'];
 $directory = 'data/events/'.$scene;

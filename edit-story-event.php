@@ -27,12 +27,13 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
                     <li><a id="add-new-page"><div class="menu-button btn btn-default">Add New Page</div></a></li>
                     <li><a id="remove-page"><div class="menu-button btn btn-default">Remove Page</div></a></li>
                     <li><a id="copy-page"><div class="menu-button btn btn-default">Copy Page</div></a></li>
-                    <li><a id="save-event"><div class="menu-button btn btn-default">Save Event</div></a></li>
+                    <li><a id="save-event"><div class="menu-button btn btn-default">Save Event</div></a></li
+                    <li><a id="test-event"><div class="menu-button btn btn-default">Test Event</div></a></li>
                     <li><a id="back"><div class="menu-button btn btn-default">Go Back</div></a></li>
                 </ul>
             </div>
             <div class="editor-left-menu" id="pages">
-                <ul>
+                <ul id="sortable">
                 <?php
                 foreach ($pages as $key => $value) {
                     $mus = $value['music'];
@@ -47,7 +48,7 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
             <div id="editor-page-options">
                 <div id="music-select">Music:
                     <select>
-                        <?php 
+                        <?php
                         forEach($music as $song){
                             echo '<option value='.$song.'>'.$song.'</option>';
                         }
@@ -82,7 +83,7 @@ $music = array_diff(scandir($music_directory), array('..', '.'));
                                 $desc = $value2['desc'];
                                 $page = $value2['page'];
                                 $effect = $value2['effect'];
-                                echo '<li class="choice-'.$key.'"><a class="remove-choice"><div class="btn btn-default">x</div></a><div>Display Text: <input class="display-text" value="'.$display.'"></input></div><div>Desc: <textarea class="desc-text">'.$desc.'</textarea></div><div>To Page: <select class="pages-to"></select></div><div>Effect: <select class="on-page-effect"></select></div></li>';
+                                echo '<li class="choice-'.$key.' choice-li"><a class="remove-choice"><div class="btn btn-default">x</div></a><div>Display Text: <input class="display-text" value="'.$display.'"></input></div><div>Desc: <textarea class="desc-text">'.$desc.'</textarea></div><div>To Page: <select class="pages-to" initialValue="'.$page.'"></select></div><div>Effect: <select class="on-page-effect" initialValue="'.$effect.'"></select></div></li>';
                             }
                         }
                         ?>

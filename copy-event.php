@@ -1,6 +1,7 @@
 <?php
-$name = $_POST['name'];
-$scene = $_POST['scene'];
+include("php-config.php");
+$name = addDashes($_POST['name']);
+$scene = addDashes($_POST['scene']);
 
 
 $directory = 'data/events/'.$scene;

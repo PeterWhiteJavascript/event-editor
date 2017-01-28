@@ -1,13 +1,13 @@
 <?php
+include("php-config.php");
 $name = "New Event";
-$scene = $_POST["scene"];
+$scene = addDashes($_POST["scene"]);
 $event = [];
 $desc = "";
 $kind = "story";
 //Check if name is set, otherwise it's a new event
 if(isset($_POST['name'])){
-    $name = $_POST["name"];
-    $scene = $_POST["scene"];
+    $name = addDashes($_POST["name"]);
     $event = json_decode(file_get_contents('data/events/'.$scene.'/'.$name.'.json'), true);
     $desc = $event['desc'];
     $kind = $event['kind'];

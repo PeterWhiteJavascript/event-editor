@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
 
 var Q = window.Q = Quintus({audioSupported: ['mp3','ogg','wav']}) 
-        .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI, TMX, Audio, QFunctions, AI, Animations, HUD, Music, Objects, UIObjects, SceneFuncs, GameObjects")
+        .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI, TMX, Audio, QFunctions, AI, Animations, HUD, Music, Objects, UIObjects, SceneFuncs, GameObjects, EditorTester")
         .setup({development: true})
         .touch().controls(true)
         .enableSound();
@@ -245,8 +245,23 @@ Q.load(files.join(','),function(){
     Q.organizeEquipment();
     //Initialize the sprite sheets and make the animations work. -> animations.js
     Q.setUpAnimations();
-    //For now, just start a new game when we load in. -> main.js
-    Q.newGame({gender:"female"});
+    
+    /*
+     *  THIS IS THE SLIM VERSION OF THE GAME THAT IS USED FOR TESTING ONLY
+     */
+    var scene = document.getElementById("title").innerHTML.toLowerCase();
+    var name = document.getElementById("title2").innerHTML.toLowerCase();
+    Q.load("../../data/events/"+scene+"/"+name+".json",function(){
+        //Figure out what type of scene we're testing
+        Q.state.set("testingScene",Q.assets["../../data/events/"+scene+"/"+name+".json"]);
+        var kind = Q.state.get("testingScene").kind;
+        switch(kind){
+            case "story":
+                Q.testStoryScene(Q.state.get("testingScene"));
+                break;
+        }
+    });
+    
     //Start the game from the JSON save data
     //Q.startGame(Q.assets['json/save/sample_save_data.json']);
     //Make it so that you can open the options menu at all times

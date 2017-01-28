@@ -6,7 +6,7 @@ var selectedScene;
 
 $(function(){
     //START OPTS BUTTONS
-    $('#open-scene').click( function(e) {
+    $('#open-scene').click(function(e){
         var scene = $(selectedScene).parent().attr("name");
         var form = $('<form action="show-events.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
         form.submit();

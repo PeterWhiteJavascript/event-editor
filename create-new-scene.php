@@ -14,9 +14,9 @@
                 <div class="menu middle">
                     <form action="save-new-scene.php" method="post">
                         Scene Name<br>
-                        <input type="text" name="name"><br>
+                        <input type="text" name="name" placeholder="Name of Scene"><br>
                         Description<br>
-                        <input type="text" name="desc">
+                        <textarea type="text" name="desc" placeholder="Description"></textarea>
                         <br>
                         <input type="submit" value="Create Scene">
                     </form>

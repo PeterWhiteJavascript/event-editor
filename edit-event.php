@@ -1,6 +1,7 @@
 <?php
-$scene = $_POST['scene'];
-$name = $_POST['name'];
+include("php-config.php");
+$scene = addDashes($_POST['scene']);
+$name = addDashes($_POST['name']);
 $desc = $_POST['desc'];
 $eventType = $_POST['event-type'];
 $newFile;
@@ -12,7 +13,7 @@ if(!isset($_POST['origName'])){
     ];
     switch($eventType){
         case "story":
-            $newFile['pages'] = (object)[];
+            $newFile['pages'] = [];
             break;
         case "dialogue":
             $newFile['interactions'] = (object)[];
@@ -25,7 +26,7 @@ if(!isset($_POST['origName'])){
             break;
     }
 }  else {
-    $file = "data/events/".$scene."/".$name.".json";
+    $file = "data/events/".$scene."/".addDashes($_POST['origName']).".json";
     $newFile = json_decode(file_get_contents($file), true);
     $newFile['name'] = $name;
     $newFile['desc'] = $desc;

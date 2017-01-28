@@ -1,5 +1,7 @@
 <?php
-$name = $_POST["name"];
+include("php-config.php");
+$name = addDashes($_POST["name"]);
+
 $desc = $_POST["desc"];
 //Make sure there's no other scene with this name
 $directory = 'data/scenes';

@@ -1,6 +1,7 @@
 <?php
-$scene = $_POST["scene"];
-$name = $_POST["name"];
+include("php-config.php");
+$scene = addDashes($_POST["scene"]);
+$name = addDashes($_POST["name"]);
 //Delete the file
 $directory = 'data/events/'.$scene;
 unlink($directory.'/'.$name.".json");
