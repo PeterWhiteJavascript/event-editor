@@ -12,7 +12,7 @@ $scene = $_POST['scene'];
         <title>RPG</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="slim-game/css/style.css" />
         <script src='slim-game/lib/quintus.js'></script>
         <script src='slim-game/lib/quintus_sprites.js'></script>
         <script src='slim-game/lib/quintus_scenes.js'></script>
@@ -24,8 +24,13 @@ $scene = $_POST['scene'];
         <script src='slim-game/lib/quintus_ui.js'></script>
         <script src='slim-game/lib/quintus_audio.js'></script>
         <script src="slim-game/lib/astar.js"></script>
+        
+        <script src="slim-game/lib/jquery-3.1.1.js"></script>
+        <script src="slim-game/lib/jquery-ui.min.js"></script>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
-    <body style="background-color:#B6B6CE">
+    <body>
         <div id="title" hidden><?php echo $scene; ?></div>
         <div id="title2" hidden><?php echo $name; ?></div>
         
@@ -41,13 +46,5 @@ $scene = $_POST['scene'];
         <script src='slim-game/js/scene_funcs.js'></script>
         <script src='slim-game/js/game_objects.js'></script>
         <script src='slim-game/js/editor_tester.js'></script>
-        <div id="main">
-            <canvas id="quintus" width="1150" height="700" style="
-                -webkit-box-shadow: 1px 0px 13px 9px rgba(209,229,235,0.5);
-                -moz-box-shadow: 1px 0px 13px 9px rgba(209,229,235,0.5);
-                box-shadow: 1px 0px 13px 9px rgba(209,229,235,0.5);
-                ">
-            </canvas>
-        </div>
     </body>
 </html>

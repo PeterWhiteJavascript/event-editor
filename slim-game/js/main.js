@@ -33,7 +33,7 @@ Q.UI.Text.prototype.wrapLabel = function(label,maxWidth){
     var split = label.split(' ');
     var newLabel = '';
     var tempLabel = '';
-    var spaceWidth = ctx.measureText(" ").width;
+    var spaceWidth = ctx.measureText(" ").width+3;
     var spaces = 0;
     //Loop through the array of the split label
     for(var i=0;i<split.length;i++){
@@ -67,7 +67,7 @@ Q.UI.Text.prototype.wrapLabel = function(label,maxWidth){
 Q.state.set({
     options:{
         //If true, BGM will play
-        musicEnabled:false,
+        musicEnabled:true,
         musicVolume:100,
         //If true, SFX will play
         soundEnabled:true,

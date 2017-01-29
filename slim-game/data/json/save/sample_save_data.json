@@ -108,7 +108,7 @@
     },
     
     "options":{
-        "musicEnabled":false,
+        "musicEnabled":true,
         "musicVolume":20,
         "soundEnabled":true,
         "soundVolume":100,

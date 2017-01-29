@@ -135,13 +135,12 @@ h2{
 }
 #editor-page-options{
     float:left;
-    width:200px;
     height:100%;
     border-width: initial;
     border-style: solid;
     border-color: black;
     padding:10px;
-    width:600px;
+    width:800px;
 }
 #music-select{
     float:left;

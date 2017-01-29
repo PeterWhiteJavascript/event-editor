@@ -21,6 +21,12 @@ Quintus.SceneFuncs=function(Q){
             });
         });
     };
+    Q.scene("story",function(stage){
+        var data = stage.options.data;
+        var bgImage = stage.insert(new Q.BackgroundImage({asset:data.pages[0].bg}));
+        Q.storyController = stage.insert(new Q.StoryController({pages:data.pages,pageNum:0,bgImage:bgImage}));
+    });
+    
     Q.scene("dialogue",function(stage){
         Q.inputs['confirm'] = false;
         var dialogueData = stage.options.dialogueData = Q.getPathData(stage.options.data,stage.options.path);

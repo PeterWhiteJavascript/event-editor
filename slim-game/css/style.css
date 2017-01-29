@@ -9,4 +9,30 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
+    overflow:hidden;
+}
+#text-container{
+    font-size:22px;
+    top:10%;
+    left:25%;
+    position:absolute;
+    width:50%;
+    height:80%;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
+    overflow-y:auto;
+}
+#text-content{
+    margin: 5% 5%;
+    width:90%;
+    color:black;
+}
+.choice-div{
+    width:auto;
+    height:auto;
+    background-color:black;
+    text-decoration:none;
+}
+.choice{
+    cursor: pointer;
 }

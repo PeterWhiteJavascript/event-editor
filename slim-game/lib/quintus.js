@@ -1332,11 +1332,10 @@ var Quintus = exportTarget[key] = function(opts) {
     } else {
       Q.el = id;
     }
-
     if(!Q.el) {
       Q.el = document.createElement("canvas");
-      Q.el.width = options.width || 320;
-      Q.el.height = options.height || 420;
+      Q.el.width = options.width || window.innerWidth;
+      Q.el.height = options.height || window.innerHeight;
       Q.el.id = id;
 
       document.body.appendChild(Q.el);
