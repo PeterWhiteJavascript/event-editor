@@ -5,7 +5,17 @@ $name = addDashes($_POST['name']);
 $desc = $_POST['desc'];
 $eventType = $_POST['event-type'];
 $newFile;
-if(!isset($_POST['origName'])){
+if(isset($_POST['origName'])){
+    $file = "data/events/".$scene."/".addDashes($_POST['origName']).".json";
+    $newFile = json_decode(file_get_contents($file), true);
+    $newFile['name'] = $name;
+    $newFile['desc'] = $desc;
+    $newFile['kind'] = $eventType;
+    file_put_contents("data/events/".$scene."/".$name.".json", json_encode($newFile));
+    if($name!==$_POST['origName']){
+        unlink($file);
+    }
+}  else {
     $newFile = [
         'name' => $name,
         'desc' => $desc,
@@ -25,21 +35,23 @@ if(!isset($_POST['origName'])){
             $newFile['battle'] = (object)[];
             break;
     }
-}  else {
-    $file = "data/events/".$scene."/".addDashes($_POST['origName']).".json";
-    $newFile = json_decode(file_get_contents($file), true);
-    $newFile['name'] = $name;
-    $newFile['desc'] = $desc;
-    $newFile['kind'] = $eventType;
+    file_put_contents("data/events/".$scene."/".$name.".json", json_encode($newFile));
 }
-file_put_contents("data/events/".$scene."/".$name.".json", json_encode($newFile));
-//Add the event to the event order of the scene
 
+//Add the event to the event order of the scene
 $sceneData = json_decode(file_get_contents("data/scenes/".$scene.".json"), true);
 if(!in_array($name, $sceneData['eventOrder'])){
     $sceneData['eventOrder'][] = $name;
-    json_encode($sceneData['eventOrder']);
+    //If the orig name is in here, remove it
+    if(isset($_POST['origName'])){
+        $index = array_search($_POST['origName'],$sceneData['eventOrder']);
+        if($index !== FALSE){
+            unset($sceneData['eventOrder'][$index]);
+        }
+    }
+    $sceneData['eventOrder'] = array_values($sceneData['eventOrder']);
     file_put_contents("data/scenes/".$scene.".json", json_encode($sceneData));
+    
 }
 ?>
 

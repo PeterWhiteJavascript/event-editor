@@ -36,3 +36,13 @@ body {
 .choice{
     cursor: pointer;
 }
+#back-button{
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+#back-button2{
+    position:absolute;
+    top:50px;
+    left:10px;
+}

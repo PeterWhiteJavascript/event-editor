@@ -6,6 +6,11 @@ var selectedEvent;
 
 $(function(){
     //START OPTS BUTTONS
+    $('#new-event').click( function(e) {
+        var scene = $("#title").text();
+        var form = $('<form action="create-event.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
+        form.submit();
+    });
     $('#edit-event').click( function(e) {
         if(selectedEvent){
             var scene = $("#title").text();
@@ -14,11 +19,16 @@ $(function(){
             form.submit();
         }
     });
-    $('#new-event').click( function(e) {
-        var scene = $("#title").text();
-        var form = $('<form action="create-event.php" method="post"><input type="text" name="scene" value="'+scene+'"></form>');
-        form.submit();
+    $('#test-event').click( function(e) {
+        if(selectedEvent){
+            var scene = $("#title").text();
+            var name = $(selectedEvent).parent().attr("name");
+            var kind = $(selectedEvent).parent().attr("kind");
+            var form = $('<form action="test-'+kind+'-event.php" method="post"><input type="text" name="scene" value="'+scene+'"><input type="text" name="name" value="'+name+'"></form>');
+            form.submit();
+        }
     });
+    
     
     $('#copy-event').click( function(e) {
         if(selectedEvent){

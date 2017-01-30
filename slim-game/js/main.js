@@ -249,6 +249,8 @@ Q.load(files.join(','),function(){
     /*
      *  THIS IS THE SLIM VERSION OF THE GAME THAT IS USED FOR TESTING ONLY
      */
+    $(document.body).append('<div id="back-button" class="btn btn-default">TO EDITOR</div>');
+    $(document.body).append('<div id="back-button2" class="btn btn-default">TO EVENTS</div>');
     var scene = document.getElementById("title").innerHTML.toLowerCase();
     var name = document.getElementById("title2").innerHTML.toLowerCase();
     Q.load("../../data/events/"+scene+"/"+name+".json",function(){
@@ -258,6 +260,18 @@ Q.load(files.join(','),function(){
         switch(kind){
             case "story":
                 Q.testStoryScene(Q.state.get("testingScene"));
+                $("#back-button").click(function(){
+                    var scene = $("#title").text();
+                    var name = $("#title2").text();
+                    var form = $('<form action="edit-story-event.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
+                    form.submit();
+                });
+                $("#back-button2").click(function(){
+                    var scene = $("#title").text();
+                    var name = $("#title2").text();
+                    var form = $('<form action="show-events.php" method="post"><input type="text" name="name" value="'+name+'"><input type="text" name="scene" value="'+scene+'"></form>');
+                    form.submit();
+                });
                 break;
         }
     });

@@ -1,6 +1,6 @@
 <?php
 include("php-config.php");
-$name = "New Event";
+$name = "";
 $scene = addDashes($_POST["scene"]);
 $event = [];
 $desc = "";
@@ -21,15 +21,14 @@ if(isset($_POST['name'])){
     </head>
     <body>
         <div id="wrapper">
-            <div id="subtitle" hidden><h2><?php echo $scene; ?></h2></div>
-            <div id="title"><h1><?php echo $name; ?></h1></div>
+            <div id="title"><h1><?php echo $scene; ?></h1></div>
             <div id="content">
                 <div class="menu middle">
                     <form action="edit-event.php" method="post">
                         Event Name<br>
-                        <input type="text" name="name" value="<?php echo $name; ?>"><br>
+                        <input type="text" name="name" value="<?php echo $name; ?>" placeholder="Event Name"><br>
                         Description<br>
-                        <textarea type="text" name="desc"><?php echo $desc; ?></textarea><br>
+                        <textarea type="text" name="desc" placeholder="Description"><?php echo $desc; ?></textarea><br>
                         Event Type<br>
                         <select name="event-type">
                             <option <?php if($kind=="story"){echo "selected";}?> value="story">Story</option>

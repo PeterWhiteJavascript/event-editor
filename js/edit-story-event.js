@@ -9,6 +9,8 @@ $(function(){
     //Increment every time a new page is added (so we don't have duplicate page names if a page was deleted)
     var uniquePages = $("#pages ul li").length;
     
+    //When editing a name, set to true
+    var editingName = false;
     function renamePageOption(from,to){
         $(".pages-to option").each(function(){
             if($(this).text()===from){
@@ -39,8 +41,7 @@ $(function(){
         "Change Morale",
         "Change Gold",
         "Change Exp",
-        "Change Enemy Setup",
-        "Remove Choice From Page"
+        "Change Enemy Setup"
     ];
     //Includes the properties for each effect func
     var props = [
@@ -48,8 +49,7 @@ $(function(){
         [{name:"Amount",value:0},{name:"Affects",value:["Whole Party","Avaiable Only"]}],
         [{name:"Amount",value:0}],
         [{name:"Amount",value:0},{name:"Affects",value:["Whole Party","Avaiable Only"]}],
-        [{name:"Change To",value:[1,2,3,4]}],
-        [{name:"Display Text of Choice",value:""},{name:"Page of Choice",value:""}]
+        [{name:"Change To",value:[1,2,3,4]}]
         
     ];
     function appendOnPageEffects(to){
@@ -124,6 +124,7 @@ $(function(){
         var bg = $("#pages ul li:last-child").attr("bg")?$("#pages ul li:last-child").attr("bg"):$("#bg-select option").first().val();
         $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+music+'" bg="'+bg+'" text=""><a class="scene-button"><div class="menu-button btn btn-default">Page '+uniquePages+'</div></a></li>');
         appendNewPageOption();
+        $(".scene-button").last().trigger("click");
     });
     $('#remove-page').click( function(e) {
         if($('#pages ul li').length>1){
@@ -134,8 +135,26 @@ $(function(){
     //Copies the page, but give a new unique id
     $('#copy-page').click( function(e) {
         uniquePages++;
-        $("#pages ul").append('<li id="'+new Date().getUTCMilliseconds()+'" music="'+$(selectedPage).parent().attr("music")+'" bg="'+$(selectedPage).parent().attr("bg")+'" text="'+$(selectedPage).parent().attr("text")+'"><a class="scene-button"><div class="menu-button btn btn-default">Page '+uniquePages+'</div></a></li>');
+        var id = new Date().getUTCMilliseconds();
+        $("#pages ul").append('<li id="'+id+'" music="'+$(selectedPage).parent().attr("music")+'" bg="'+$(selectedPage).parent().attr("bg")+'" text="'+$(selectedPage).parent().attr("text")+'"><a class="scene-button"><div class="menu-button btn btn-default">Page '+uniquePages+'</div></a></li>');
+        //TO DO: Also copy any choices
+        var clone = $('.choice-'+$(selectedPage).parent().attr("id")).clone();
+        clone.attr("class","choice-"+id+" choice-li");
+        $("#choices ul").append(clone);
         appendNewPageOption();
+        //Set the pages to and effect to be the same
+        /*for(var i=1;i<$(".choice-"+id+" .pages-to").length+1;i++){
+            console.log($(".choice-"+$(selectedPage).parent().attr("id")+" .pages-to").val())
+        }*/
+        $(".choice-"+$(selectedPage).parent().attr("id")+" select").each(function(i) {
+            var select = this;
+            console.log($(select).val())
+            $(".choice-"+id).find("select").eq(i).val($(select).val());
+        });
+        //$(".choice-"+id+" .pages-to").val($('.choice-'+$(selectedPage).parent().attr("id")+' .pages-to').val());
+        //$(".choice-"+id+" .on-page-effect").val($('.choice-'+$(selectedPage).parent().attr("id")+' .on-page-effect').val());
+        
+        $(".scene-button").last().trigger("click");
     });
     //Test the event in the same conditions as in game!
     $('#test-event').click( function(e) {
@@ -167,7 +186,6 @@ $(function(){
         $("#bg-preview").attr("src","slim-game/images/"+$(this).val());
     });
     function finishEditPageName(){
-        console.log("hi")
         var name = $(selectedPage).find(':first-child').val();
         var orig = $(selectedPage).find(':first-child').attr("origValue");
         if(!name.length){
@@ -176,6 +194,7 @@ $(function(){
         $(selectedPage).find(':first-child').remove();
         $(selectedPage).append('<div class="menu-button btn btn-default active">'+name+'</div>');
         renamePageOption(orig,name);
+        editingName=false;
     }
     //When an individual page is clicked
     $(document).on("click",".scene-button",function(e){
@@ -189,6 +208,7 @@ $(function(){
                 $(selectedPage).find(':first-child').select();
                 $(selectedPage).find(':first-child').focusout(finishEditPageName);
                 $(selectedPage).find(':first-child').change(finishEditPageName);
+                editingName=true;
             }
         } else {
             //Hide the choices from the last page
@@ -197,6 +217,10 @@ $(function(){
             $(".choice-"+$(this).parent().attr("id")).show();
             //Save the text
             $(selectedPage).parent().attr("text",$("#text-select textarea").val()); 
+            //Make sure to always finish editing if a new element is selected
+            if(editingName){
+                finishEditPageName();
+            }
             selectedPage = this;
             $(".menu-button.active").removeClass("active");
             $(this).children(":first").addClass('active');
@@ -231,10 +255,6 @@ $(function(){
     if($("#pages ul li").length===0){
         $('#add-new-page').trigger("click");
     }
-    
-    //Default to top item being selected
-    $(".scene-button").first().trigger("click");
-    
     
 });
 

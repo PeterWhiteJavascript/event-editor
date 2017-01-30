@@ -36,8 +36,9 @@ forEach($order as $name){
                 </ul>
                 <div id="show-desc" class="menu middle"></div>
                 <ul class="menu right">
-                    <li><a id="edit-event"><div class="menu-button btn btn-default">Edit Event</div></a></li>
                     <li><a id="new-event"><div class="menu-button btn btn-default">New Event</div></a></li>
+                    <li><a id="edit-event"><div class="menu-button btn btn-default">Edit Event</div></a></li>
+                    <li><a id="test-event"><div class="menu-button btn btn-default">Test Event</div></a></li>
                     <li><a id="copy-event"><div class="menu-button btn btn-default">Copy Event</div></a></li>
                     <li><a id="order-events"><div class="menu-button btn btn-default">Order Events</div></a></li>
                     <li><a id="change-scene"><div class="menu-button btn btn-default">Change Scene</div></a></li>
@@ -46,6 +47,6 @@ forEach($order as $name){
                 <div id="footer"><a href="load.php"><div class="menu-button btn btn-default">BACK</div></a></div>
             </div>
         </div>
-        <script src="js/load-events.js"></script>
+        <script src="js/show-events.js"></script>
     </body>
 </html>
